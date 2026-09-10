@@ -1,9 +1,5 @@
 html[data-host="visionos"] body {
-    display: flex;
-    flex-direction: column;
-    height: 100dvh;
-    min-height: 0;
-    overflow: hidden;
+    min-height: 100dvh;
 }
 
 html[data-host="visionos"] .preview-header {
@@ -12,11 +8,14 @@ html[data-host="visionos"] .preview-header {
 }
 
 html[data-host="visionos"] .stage {
-    display: flex;
-    flex: 1;
+    display: block;
     min-height: 0;
     padding: 0 12px 12px;
-    overflow: hidden;
+    perspective: none;
+}
+
+html[data-host="visionos"] .stage::before {
+    inset: 0;
 }
 
 html[data-host="visionos"] .app-window {
@@ -36,6 +35,26 @@ html[data-host="visionos"] .preview-footer {
 html[data-host="visionos"] .content-scroll {
     min-height: 0;
     overflow-y: auto;
+}
+
+/* Give WKWebView's main scroll view the full page height. The 3D desk
+   retains its own viewport and nested scrolling inside each floating panel. */
+html[data-host="visionos"] .stage > .app-window {
+    height: auto;
+    min-height: calc(100dvh - 80px);
+    overflow: clip;
+}
+
+html[data-host="visionos"] .stage .content-scroll {
+    flex: 1 0 auto;
+    overflow: visible;
+}
+
+html[data-host="visionos"] .stage .sidebar {
+    position: sticky;
+    top: 12px;
+    align-self: start;
+    max-height: calc(100dvh - 24px);
 }
 
 html[data-host="visionos"] button,
@@ -63,5 +82,12 @@ html[data-host="visionos"] .floating-window {
 
     html[data-host="visionos"] .workspace-content {
         flex: 1;
+    }
+
+    html[data-host="visionos"] .stage .sidebar {
+        position: static;
+        align-self: stretch;
+        max-height: none;
+        flex-shrink: 0;
     }
 }

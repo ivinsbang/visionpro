@@ -95,8 +95,13 @@ and is loaded with `loadFileURL`, with read access restricted to that folder.
 7. Open **Native workspace**. Explore its overview/settings screens, open/close the
    native companion, and open the workspace repeatedly to check window reuse.
    This shell's status provider is separate from the JavaScript market generator.
-8. Resize the main window and scroll the dashboard. Use the system window bar to
-   move the whole app in Simulator, not the web panel title bars.
+8. Resize the main window and scroll to the bottom of Market desk, Paper trading,
+   Portfolio & risk, Overview, Spatial workspace, and Settings. The final content
+   and the "Synthetic environment" footer must be reachable on every page,
+   including at the minimum window size. Switch tabs while scrolled down and
+   confirm the new page starts at the top. The flat bundled desk uses document
+   scrolling through WebKit's main scroll view; the 3D desk keeps scrolling inside
+   its floating panels. Use the system window bar to move the whole app in Simulator.
 9. Open **Paper trading**, review a one-contract buy, cancel it, then review again
    and confirm. Only the confirmation should create a labeled paper fill. Inspect
    the resulting position, P/L, and fictional margin in **Portfolio & risk**.

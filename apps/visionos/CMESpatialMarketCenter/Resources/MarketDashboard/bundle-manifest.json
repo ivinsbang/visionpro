@@ -10,7 +10,7 @@
   },
   "sources": {
     "index.html": "8d3e1bbfed591095d64b53c3809acd4bab1cbd4538fe24cf8d946dfb7373e4b9",
-    "app.js": "41b6eadbffca469d3b01287ff063e520ef8a39089b9b44e2e2f33ddcc6767513",
+    "app.js": "cb7c30fa298e2a055904259134bb9642af808685e83e50f492a883e369934c35",
     "styles.css": "b74437a0d3e808316bb1077040f4aee6e92aa079dff73c13be0dbc6bbb048041",
     "icon.svg": "a2d4b25083928391db2a684784c86dc2edb125b8781b6c72d115ee9d2f3316f6",
     "market/contracts.js": "f5c1cb20edabd95dedf36e48c4ae2edb9e0e0f8b032bb9378bcfe347aa168687",
@@ -25,13 +25,13 @@
     "spatial/desk-layout.js": "89f6b7015b76b524b899ca4f9ba0f14c201273016451b3cf1034d4c99b5f50df",
     "spatial/desk.js": "f2ad71c08d69cc6a2f5601161c7dc5de70b81a5283ed3d91ee518703d12484cc",
     "spatial/desk.css": "46f7695ca560877b333aa6cc54abf2596f62a067d8f3eea7c42c6558b0e6f0c2",
-    "hosts/visionos.css": "e9300260d83002955b1f0c369bf10fe732b4a9a985b974f4476017d8e4e1c074",
+    "hosts/visionos.css": "d1c32080a67bdcbdaa770f296909dd976dcbfb863d1be647c335d9cb30954039",
     "scripts/build-visionos.js": "16f4cb2178cc9740df3b9e1a7a97e1f4db1747e939c428820ba0e605f3d3540c"
   },
   "files": {
     "index.html": "4e42c5b105cc6426784e2fd53f48a2189f17ca9a9538ac934c28ff554f07b4bb",
-    "app.bundle.js": "140882374ae773b37c5fc8c6a9327d68f4a1bc31b1192fc836a3226348b5cb35",
-    "dashboard.css": "93b18f30177e8586941570150b8ee70cc50879c74f1520ecf4abab0286167b0b",
+    "app.bundle.js": "c95f84c187c9ad83a6790db81f54ae5d5c902730b1d1b49178389888c6910cdd",
+    "dashboard.css": "9c27b123a5666027d7f27499f51fa6f73dc87e70362292298d4cfb9347414f04",
     "icon.svg": "a2d4b25083928391db2a684784c86dc2edb125b8781b6c72d115ee9d2f3316f6"
   }
 }

@@ -37,6 +37,43 @@ async function openDesk(page) {
     await expect(page.locator("html")).toHaveAttribute("data-host", "visionos");
 }
 
+for (const viewport of [{ width: 1440, height: 840 }, { width: 1040, height: 590 }, { width: 600, height: 600 }]) {
+    test(`native document scrolling reaches every page bottom at ${viewport.width}x${viewport.height}`, async ({ page }) => {
+        await page.setViewportSize(viewport);
+        await openDesk(page);
+
+        for (const tab of ["markets", "paper", "portfolio", "overview", "workspace", "settings"]) {
+            await page.locator(`.navigation [data-page="${tab}"]`).click();
+            await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+
+            // WKWebView's main scroll view needs document overflow, even when a
+            // desktop browser can scroll a nested element with the mouse wheel.
+            if (tab === "markets" || viewport.height <= 600) {
+                expect(await page.evaluate(() => document.scrollingElement.scrollHeight > innerHeight)).toBe(true);
+            }
+
+            const content = page.locator(".content-scroll");
+            const bounds = await content.boundingBox();
+            await page.mouse.move(bounds.x + bounds.width - 40, Math.min(bounds.y + 100, viewport.height - 40));
+            await page.mouse.wheel(0, 10000);
+
+            await expect(page.locator(".window-footer")).toBeInViewport({ ratio: 1 });
+            await expect.poll(() => page.locator(`#page-${tab}`).evaluate((element) =>
+                element.lastElementChild.getBoundingClientRect().bottom
+            )).toBeLessThanOrEqual(viewport.height);
+            await expect.poll(() => page.evaluate(() => {
+                const scroller = document.scrollingElement;
+                return scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 1;
+            })).toBe(true);
+            expect(await content.evaluate((element) => element.scrollTop)).toBe(0);
+
+            if (viewport.width > 720) {
+                await expect(page.locator('.navigation [data-page="settings"]')).toBeInViewport({ ratio: 1 });
+            }
+        }
+    });
+}
+
 test("bundled file loads and streams without network requests or a server", async ({ page }) => {
     await page.clock.install({ time: new Date("2026-09-09T13:30:20Z") });
     await openDesk(page);
@@ -95,7 +132,6 @@ test("offline demo outage and recovery work at the native minimum window size", 
     await page.setViewportSize({ width: 1040, height: 590 });
     await openDesk(page);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-    expect(await page.evaluate(() => document.documentElement.scrollHeight <= window.innerHeight + 1)).toBe(true);
     await page.locator('[data-page="settings"]').click();
     await page.getByRole("button", { name: "Simulate feed outage", exact: true }).click();
     await page.locator('[data-page="markets"]').click();
@@ -153,7 +189,6 @@ test("bundled paper trading honors paused data and confirms destructive resets a
     await page.getByRole("button", { name: "Confirm paper reset", exact: true }).click();
     await expect(page.locator("#portfolio-position-count")).toHaveText("0");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-    expect(await page.evaluate(() => document.documentElement.scrollHeight <= window.innerHeight + 1)).toBe(true);
 });
 
 test("bundled 3D room reuses paper state and exits without network or ledger reset", async ({ page }) => {

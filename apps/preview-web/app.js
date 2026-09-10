@@ -41,6 +41,9 @@ function showPage(pageName) {
     }
     document.querySelector("#page-heading").textContent = pageNames.get(selectedPage);
     document.querySelector(".content-scroll").scrollTop = 0;
+    if (document.documentElement.dataset.host === "visionos" && !spatialDesk?.isActive()) {
+        window.scrollTo(0, 0);
+    }
     spatialDesk?.onPageChange(selectedPage);
 }
 
