@@ -1,0 +1,67 @@
+html[data-host="visionos"] body {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+html[data-host="visionos"] .preview-header {
+    flex: 0 0 auto;
+    padding: 12px 24px;
+}
+
+html[data-host="visionos"] .stage {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    padding: 0 12px 12px;
+    overflow: hidden;
+}
+
+html[data-host="visionos"] .app-window {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+html[data-host="visionos"] .ambient-orbit,
+html[data-host="visionos"] .window-grab-bar,
+html[data-host="visionos"] .preview-footer {
+    display: none;
+}
+
+html[data-host="visionos"] .content-scroll {
+    min-height: 0;
+    overflow-y: auto;
+}
+
+html[data-host="visionos"] button,
+html[data-host="visionos"] select,
+html[data-host="visionos"] input {
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+}
+
+html[data-host="visionos"] .drag-handle {
+    touch-action: none;
+}
+
+html[data-host="visionos"] .floating-window {
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+}
+
+@media (max-width: 720px) {
+    html[data-host="visionos"] .app-window {
+        display: flex;
+        flex-direction: column;
+    }
+
+    html[data-host="visionos"] .workspace-content {
+        flex: 1;
+    }
+}

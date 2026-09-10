@@ -1,0 +1,41 @@
+Project is for Apple Vision Pro 
+####
+For **CME Group customers**—traders, brokers, clearing members and institutional clients—Apple Vision Pro could provide an immersive trading and market-analysis experience.
+
+### Customer use ideas
+
+* **Virtual Trading Desk:** Customers can open several large virtual screens for CME futures/options, order books, charts, news and positions.
+* **3D Market Visualization:** View price movement, volume, volatility, open interest and market depth in an interactive 3D format.
+* **Portfolio and Risk View:** See margin requirements, exposure, profit/loss and risk alerts across asset classes such as equity indexes, energy, agriculture, FX and interest rates.
+* **Voice-assisted Market Search:** Ask questions such as, “Show today’s highest-volume energy contracts” or “Compare gold volatility with the previous week.”
+* **Trading Simulation:** New customers can practise placing orders and managing risk using delayed or simulated data before entering the live market.
+* **Product Education:** Interactive explanations of futures, options, spreads, expiry, settlement and margin calculations.
+* **Virtual Client Support:** A CME specialist and customer could securely review the same charts, reports or platform workflow in a shared virtual room.
+* **Market Event Experience:** Customers could follow major events—Fed announcements, crude-oil reports or agricultural releases—through live dashboards and alerts.
+
+### Best initial product idea
+
+A **“CME Spatial Market Center”** app with:
+
+1. Live or delayed CME market data
+2. Custom watchlists and alerts
+3. Multiple virtual chart screens
+4. Portfolio and margin-risk dashboard
+5. Contract information and expiry calendar
+6. Paper-trading mode
+7. Voice and eye-controlled navigation
+
+For safety, the first release should focus on **analysis, education and simulated trading**. Live order execution can be added later through approved brokers, with strong confirmation steps, MFA, entitlement checks and regulatory controls.
+
+
+###
+
+Above is idea to visual in VisionPro.
+
+Do one by one in my pwd./e/Vision_Pro
+1. Build the directory structure as Production ready git repo.
+2. Go through above idea and frist go with step one and I'll verify and once I approve go for next step 
+
+####
+
+build a Vision Pro prototype on my personal Windows laptop that looks and behaves like it is connected to CME, without touching real CME systems.CME-style mock dashboard.

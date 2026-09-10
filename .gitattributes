@@ -1,0 +1,22 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.heic binary
+*.ico binary
+*.pdf binary
+*.usdc binary
+*.usdz binary
+*.reality binary
+*.wav binary
+*.mp3 binary
+*.mp4 binary
+*.mov binary
+*.ttf binary
+*.otf binary
+*.zip binary

@@ -1,0 +1,37 @@
+{
+  "formatVersion": 1,
+  "source": "apps/preview-web",
+  "host": "visionos",
+  "mode": "synthetic",
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2",
+    "target": "safari17"
+  },
+  "sources": {
+    "index.html": "8d3e1bbfed591095d64b53c3809acd4bab1cbd4538fe24cf8d946dfb7373e4b9",
+    "app.js": "41b6eadbffca469d3b01287ff063e520ef8a39089b9b44e2e2f33ddcc6767513",
+    "styles.css": "b74437a0d3e808316bb1077040f4aee6e92aa079dff73c13be0dbc6bbb048041",
+    "icon.svg": "a2d4b25083928391db2a684784c86dc2edb125b8781b6c72d115ee9d2f3316f6",
+    "market/contracts.js": "f5c1cb20edabd95dedf36e48c4ae2edb9e0e0f8b032bb9378bcfe347aa168687",
+    "market/simulator.js": "5e28f5bf209d665c83a36aa89204367c0f582ae484e74fe88b9db95b999cfcb4",
+    "market/chart.js": "80b855fa4f13cf9ffacdd3d43b3e2f92deeb80dc829883e22b0ebe0df5cb171a",
+    "market/dashboard.js": "09a1789ecdaa0de11bd16acf535c3c3cafab35c52d7d194fc985200f60df6ed8",
+    "market/dashboard.css": "69769cb2ad21c57d8d9fd90afcf4589ddf7212c49e9d84941d6f3aa01c0d16d6",
+    "market/paper-trading-model.js": "a56e8ca514808d68e5fdff88c1b8032ad8f28e3d0312f8c5b4a52e8f90a8cb11",
+    "market/paper-trading-fixtures.js": "33378d0f261bbddb64c51634e07e788e2496be7337b297f959ab60b28621b9a3",
+    "market/paper-trading.js": "e544b4bd1e0a79a1e15126fcc8d63fb448ae5cfb1e967a121dadae0a66be9502",
+    "market/paper-trading.css": "3464aa71129c0d0856f6897377093c5653b5eb9a5b751b4383265a7af0499c88",
+    "spatial/desk-layout.js": "89f6b7015b76b524b899ca4f9ba0f14c201273016451b3cf1034d4c99b5f50df",
+    "spatial/desk.js": "f2ad71c08d69cc6a2f5601161c7dc5de70b81a5283ed3d91ee518703d12484cc",
+    "spatial/desk.css": "46f7695ca560877b333aa6cc54abf2596f62a067d8f3eea7c42c6558b0e6f0c2",
+    "hosts/visionos.css": "e9300260d83002955b1f0c369bf10fe732b4a9a985b974f4476017d8e4e1c074",
+    "scripts/build-visionos.js": "16f4cb2178cc9740df3b9e1a7a97e1f4db1747e939c428820ba0e605f3d3540c"
+  },
+  "files": {
+    "index.html": "4e42c5b105cc6426784e2fd53f48a2189f17ca9a9538ac934c28ff554f07b4bb",
+    "app.bundle.js": "140882374ae773b37c5fc8c6a9327d68f4a1bc31b1192fc836a3226348b5cb35",
+    "dashboard.css": "93b18f30177e8586941570150b8ee70cc50879c74f1520ecf4abab0286167b0b",
+    "icon.svg": "a2d4b25083928391db2a684784c86dc2edb125b8781b6c72d115ee9d2f3316f6"
+  }
+}

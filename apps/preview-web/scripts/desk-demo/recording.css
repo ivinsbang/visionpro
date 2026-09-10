@@ -1,0 +1,10 @@
+body[data-desk-recording] #spatial-desk { bottom: 165px; }
+body[data-desk-recording] * { cursor: none !important; }
+#desk-film-caption { position: fixed; left: 7%; right: 7%; bottom: 15px; height: 139px; padding: 17px 24px; border: 1px solid #8dd9d440; border-radius: 20px; background: linear-gradient(115deg, #1b3849, #0f2636); box-shadow: 0 15px 45px #0005; z-index: 2147483000; pointer-events: none; }
+#desk-film-caption header { display: flex; align-items: center; justify-content: space-between; color: #8edcd1; font-size: 10px; letter-spacing: 1.5px; }
+#desk-film-caption header span:last-child { color: #afc6d1; font-size: 9px; }
+#desk-film-title { color: #eef7fc; font-size: 22px; font-weight: 500; letter-spacing: -0.5px; margin: 9px 0 0; }
+#desk-film-pointer { position: fixed; top: 0; left: 0; width: 23px; height: 30px; pointer-events: none; z-index: 2147483600; filter: drop-shadow(0 2px 3px #0007); }
+#desk-film-pointer svg { width: 100%; height: 100%; }
+#desk-film-pointer.pressed { filter: drop-shadow(0 0 8px #b1f8e5); }
+body:has(dialog[open]) #desk-film-pointer { display: none; }

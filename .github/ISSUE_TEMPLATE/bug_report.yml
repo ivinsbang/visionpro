@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a reproducible problem with the project.
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe expected and observed behavior. Exclude private data.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include the steps and whether the data is synthetic, delayed, or live.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: App revision, Xcode/visionOS versions, and simulator or device, if relevant.
+    validations:
+      required: true

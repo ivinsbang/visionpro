@@ -1,0 +1,801 @@
+// !$*UTF8*$!
+{
+    "archiveVersion" = 1;
+    "classes" = {
+
+    };
+    "objectVersion" = 56;
+    "objects" = {
+        "AAAAAAAAAAAAAAAAAAAAAAA1" = {
+            "isa" = "PBXProject";
+            "attributes" = {
+                "BuildIndependentTargetsInParallel" = "YES";
+                "LastSwiftUpdateCheck" = "2630";
+                "LastUpgradeCheck" = "2630";
+                "TargetAttributes" = {
+                    "AAAAAAAAAAAAAAAAAAAAAAA2" = {
+                        "CreatedOnToolsVersion" = "26.3";
+                        "ProvisioningStyle" = "Automatic";
+                    };
+                    "AAAAAAAAAAAAAAAAAAAAAAA3" = {
+                        "CreatedOnToolsVersion" = "26.3";
+                        "TestTargetID" = "AAAAAAAAAAAAAAAAAAAAAAA2";
+                    };
+                    "AAAAAAAAAAAAAAAAAAAAAAA4" = {
+                        "CreatedOnToolsVersion" = "26.3";
+                        "TestTargetID" = "AAAAAAAAAAAAAAAAAAAAAAA2";
+                    };
+                };
+            };
+            "buildConfigurationList" = "AAAAAAAAAAAAAAAAAAAAAA34";
+            "compatibilityVersion" = "Xcode 14.0";
+            "developmentRegion" = "en";
+            "hasScannedForEncodings" = 0;
+            "knownRegions" = (
+                "en",
+                "Base",
+            );
+            "mainGroup" = "AAAAAAAAAAAAAAAAAAAAAA29";
+            "packageReferences" = (
+                "AAAAAAAAAAAAAAAAAAAAAA2A",
+                "AAAAAAAAAAAAAAAAAAAAAA2B",
+                "AAAAAAAAAAAAAAAAAAAAAA2C",
+            );
+            "productRefGroup" = "AAAAAAAAAAAAAAAAAAAAAA28";
+            "projectDirPath" = "";
+            "projectRoot" = "";
+            "targets" = (
+                "AAAAAAAAAAAAAAAAAAAAAAA2",
+                "AAAAAAAAAAAAAAAAAAAAAAA3",
+                "AAAAAAAAAAAAAAAAAAAAAAA4",
+            );
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA2" = {
+            "isa" = "PBXNativeTarget";
+            "buildConfigurationList" = "AAAAAAAAAAAAAAAAAAAAAA37";
+            "buildPhases" = (
+                "AAAAAAAAAAAAAAAAAAAAAA48",
+                "AAAAAAAAAAAAAAAAAAAAAA4C",
+                "AAAAAAAAAAAAAAAAAAAAAA4F",
+            );
+            "buildRules" = ();
+            "dependencies" = ();
+            "name" = "CMESpatialMarketCenter";
+            "packageProductDependencies" = (
+                "AAAAAAAAAAAAAAAAAAAAAA2D",
+                "AAAAAAAAAAAAAAAAAAAAAA2E",
+                "AAAAAAAAAAAAAAAAAAAAAA2F",
+            );
+            "productName" = "CMESpatialMarketCenter";
+            "productReference" = "AAAAAAAAAAAAAAAAAAAAAA25";
+            "productType" = "com.apple.product-type.application";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA3" = {
+            "isa" = "PBXNativeTarget";
+            "buildConfigurationList" = "AAAAAAAAAAAAAAAAAAAAAA3A";
+            "buildPhases" = (
+                "AAAAAAAAAAAAAAAAAAAAAA51",
+                "AAAAAAAAAAAAAAAAAAAAAA54",
+                "AAAAAAAAAAAAAAAAAAAAAA55",
+            );
+            "buildRules" = ();
+            "dependencies" = (
+                "AAAAAAAAAAAAAAAAAAAAAA57",
+            );
+            "name" = "CMESpatialMarketCenterTests";
+            "packageProductDependencies" = (
+                "AAAAAAAAAAAAAAAAAAAAAA30",
+                "AAAAAAAAAAAAAAAAAAAAAA31",
+            );
+            "productName" = "CMESpatialMarketCenterTests";
+            "productReference" = "AAAAAAAAAAAAAAAAAAAAAA26";
+            "productType" = "com.apple.product-type.bundle.unit-test";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA4" = {
+            "isa" = "PBXNativeTarget";
+            "buildConfigurationList" = "AAAAAAAAAAAAAAAAAAAAAA3D";
+            "buildPhases" = (
+                "AAAAAAAAAAAAAAAAAAAAAA59",
+                "AAAAAAAAAAAAAAAAAAAAAA5A",
+                "AAAAAAAAAAAAAAAAAAAAAA5B",
+            );
+            "buildRules" = ();
+            "dependencies" = (
+                "AAAAAAAAAAAAAAAAAAAAAA5D",
+            );
+            "name" = "CMESpatialMarketCenterUITests";
+            "productName" = "CMESpatialMarketCenterUITests";
+            "productReference" = "AAAAAAAAAAAAAAAAAAAAAA27";
+            "productType" = "com.apple.product-type.bundle.ui-testing";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA5" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "CMESpatialMarketCenterApp.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA6" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceModel.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA7" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAAA5",
+                "AAAAAAAAAAAAAAAAAAAAAAA6",
+            );
+            "path" = "App";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA8" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceDestination.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAA9" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAAA8",
+            );
+            "path" = "Navigation";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAAA" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceOverviewView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAAB" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceWindowsView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAAC" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAAAA",
+                "AAAAAAAAAAAAAAAAAAAAAAAB",
+            );
+            "path" = "Overview";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAAD" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceSettingsView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAAE" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAAAD",
+            );
+            "path" = "Settings";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAAAF" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAAAC",
+                "AAAAAAAAAAAAAAAAAAAAAAAE",
+                "AAAAAAAAAAAAAAAAAAAAAA61",
+            );
+            "path" = "Features";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA10" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "MarketCenterRootView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA11" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceStatusView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA12" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "CompanionWindowView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA13" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA10",
+                "AAAAAAAAAAAAAAAAAAAAAA11",
+                "AAAAAAAAAAAAAAAAAAAAAA12",
+            );
+            "path" = "Windows";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA14" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "SpatialPreviewScene.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA15" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA14",
+            );
+            "path" = "Volumes";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA16" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA13",
+                "AAAAAAAAAAAAAAAAAAAAAA15",
+            );
+            "path" = "Scenes";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA17" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "folder.assetcatalog";
+            "path" = "Assets.xcassets";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA18" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA17",
+            );
+            "path" = "Assets";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA19" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "text.xml";
+            "path" = "PrivacyInfo.xcprivacy";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA1A" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA18",
+                "AAAAAAAAAAAAAAAAAAAAAA19",
+                "AAAAAAAAAAAAAAAAAAAAAA65",
+            );
+            "path" = "Resources";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA1B" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "text.plist.xml";
+            "path" = "Info.plist";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA1C" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAAA7",
+                "AAAAAAAAAAAAAAAAAAAAAAA9",
+                "AAAAAAAAAAAAAAAAAAAAAAAF",
+                "AAAAAAAAAAAAAAAAAAAAAA16",
+                "AAAAAAAAAAAAAAAAAAAAAA1A",
+                "AAAAAAAAAAAAAAAAAAAAAA1B",
+            );
+            "path" = "CMESpatialMarketCenter";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA1D" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceModelTests.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA1E" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "WorkspaceUITests.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA1F" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA1D",
+                "AAAAAAAAAAAAAAAAAAAAAA67",
+            );
+            "path" = "CMESpatialMarketCenterTests";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA20" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA1E",
+            );
+            "path" = "CMESpatialMarketCenterUITests";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA21" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "text.xcconfig";
+            "path" = "Base.xcconfig";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA22" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "text.xcconfig";
+            "path" = "Debug.xcconfig";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA23" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "text.xcconfig";
+            "path" = "Release.xcconfig";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA24" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA21",
+                "AAAAAAAAAAAAAAAAAAAAAA22",
+                "AAAAAAAAAAAAAAAAAAAAAA23",
+            );
+            "path" = "Configuration";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA25" = {
+            "isa" = "PBXFileReference";
+            "explicitFileType" = "wrapper.application";
+            "includeInIndex" = 0;
+            "path" = "CMESpatialMarketCenter.app";
+            "sourceTree" = "BUILT_PRODUCTS_DIR";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA26" = {
+            "isa" = "PBXFileReference";
+            "explicitFileType" = "wrapper.cfbundle";
+            "includeInIndex" = 0;
+            "path" = "CMESpatialMarketCenterTests.xctest";
+            "sourceTree" = "BUILT_PRODUCTS_DIR";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA27" = {
+            "isa" = "PBXFileReference";
+            "explicitFileType" = "wrapper.cfbundle";
+            "includeInIndex" = 0;
+            "path" = "CMESpatialMarketCenterUITests.xctest";
+            "sourceTree" = "BUILT_PRODUCTS_DIR";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA28" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA25",
+                "AAAAAAAAAAAAAAAAAAAAAA26",
+                "AAAAAAAAAAAAAAAAAAAAAA27",
+            );
+            "name" = "Products";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA29" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA1C",
+                "AAAAAAAAAAAAAAAAAAAAAA1F",
+                "AAAAAAAAAAAAAAAAAAAAAA20",
+                "AAAAAAAAAAAAAAAAAAAAAA24",
+                "AAAAAAAAAAAAAAAAAAAAAA28",
+            );
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA2A" = {
+            "isa" = "XCLocalSwiftPackageReference";
+            "relativePath" = "../../packages/MarketCore";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA2B" = {
+            "isa" = "XCLocalSwiftPackageReference";
+            "relativePath" = "../../packages/MarketData";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA2C" = {
+            "isa" = "XCLocalSwiftPackageReference";
+            "relativePath" = "../../packages/SpatialUI";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA2D" = {
+            "isa" = "XCSwiftPackageProductDependency";
+            "package" = "AAAAAAAAAAAAAAAAAAAAAA2A";
+            "productName" = "MarketCore";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA2E" = {
+            "isa" = "XCSwiftPackageProductDependency";
+            "package" = "AAAAAAAAAAAAAAAAAAAAAA2B";
+            "productName" = "MarketData";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA2F" = {
+            "isa" = "XCSwiftPackageProductDependency";
+            "package" = "AAAAAAAAAAAAAAAAAAAAAA2C";
+            "productName" = "SpatialUI";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA30" = {
+            "isa" = "XCSwiftPackageProductDependency";
+            "package" = "AAAAAAAAAAAAAAAAAAAAAA2A";
+            "productName" = "MarketCore";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA31" = {
+            "isa" = "XCSwiftPackageProductDependency";
+            "package" = "AAAAAAAAAAAAAAAAAAAAAA2B";
+            "productName" = "MarketData";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA32" = {
+            "isa" = "XCBuildConfiguration";
+            "baseConfigurationReference" = "AAAAAAAAAAAAAAAAAAAAAA22";
+            "buildSettings" = {
+                "ALWAYS_SEARCH_USER_PATHS" = "NO";
+                "CLANG_WARN_DOCUMENTATION_COMMENTS" = "YES";
+                "GCC_WARN_UNUSED_VARIABLE" = "YES";
+            };
+            "name" = "Debug";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA33" = {
+            "isa" = "XCBuildConfiguration";
+            "baseConfigurationReference" = "AAAAAAAAAAAAAAAAAAAAAA23";
+            "buildSettings" = {
+                "ALWAYS_SEARCH_USER_PATHS" = "NO";
+                "CLANG_WARN_DOCUMENTATION_COMMENTS" = "YES";
+                "GCC_WARN_UNUSED_VARIABLE" = "YES";
+            };
+            "name" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA34" = {
+            "isa" = "XCConfigurationList";
+            "buildConfigurations" = (
+                "AAAAAAAAAAAAAAAAAAAAAA32",
+                "AAAAAAAAAAAAAAAAAAAAAA33",
+            );
+            "defaultConfigurationIsVisible" = 0;
+            "defaultConfigurationName" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA35" = {
+            "isa" = "XCBuildConfiguration";
+            "buildSettings" = {
+                "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" = "AccentColor";
+                "DEFINES_MODULE" = "YES";
+                "GENERATE_INFOPLIST_FILE" = "NO";
+                "INFOPLIST_FILE" = "CMESpatialMarketCenter/Info.plist";
+                "LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks";
+                "PRODUCT_BUNDLE_IDENTIFIER" = "$(CME_BUNDLE_IDENTIFIER)";
+                "PRODUCT_NAME" = "$(TARGET_NAME)";
+                "SWIFT_EMIT_LOC_STRINGS" = "YES";
+            };
+            "name" = "Debug";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA36" = {
+            "isa" = "XCBuildConfiguration";
+            "buildSettings" = {
+                "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" = "AccentColor";
+                "DEFINES_MODULE" = "YES";
+                "GENERATE_INFOPLIST_FILE" = "NO";
+                "INFOPLIST_FILE" = "CMESpatialMarketCenter/Info.plist";
+                "LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks";
+                "PRODUCT_BUNDLE_IDENTIFIER" = "$(CME_BUNDLE_IDENTIFIER)";
+                "PRODUCT_NAME" = "$(TARGET_NAME)";
+                "SWIFT_EMIT_LOC_STRINGS" = "YES";
+            };
+            "name" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA37" = {
+            "isa" = "XCConfigurationList";
+            "buildConfigurations" = (
+                "AAAAAAAAAAAAAAAAAAAAAA35",
+                "AAAAAAAAAAAAAAAAAAAAAA36",
+            );
+            "defaultConfigurationIsVisible" = 0;
+            "defaultConfigurationName" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA38" = {
+            "isa" = "XCBuildConfiguration";
+            "buildSettings" = {
+                "BUNDLE_LOADER" = "$(TEST_HOST)";
+                "GENERATE_INFOPLIST_FILE" = "YES";
+                "LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+                "PRODUCT_BUNDLE_IDENTIFIER" = "$(CME_BUNDLE_IDENTIFIER).tests";
+                "PRODUCT_NAME" = "$(TARGET_NAME)";
+                "TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/CMESpatialMarketCenter.app/CMESpatialMarketCenter";
+            };
+            "name" = "Debug";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA39" = {
+            "isa" = "XCBuildConfiguration";
+            "buildSettings" = {
+                "BUNDLE_LOADER" = "$(TEST_HOST)";
+                "GENERATE_INFOPLIST_FILE" = "YES";
+                "LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+                "PRODUCT_BUNDLE_IDENTIFIER" = "$(CME_BUNDLE_IDENTIFIER).tests";
+                "PRODUCT_NAME" = "$(TARGET_NAME)";
+                "TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/CMESpatialMarketCenter.app/CMESpatialMarketCenter";
+            };
+            "name" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA3A" = {
+            "isa" = "XCConfigurationList";
+            "buildConfigurations" = (
+                "AAAAAAAAAAAAAAAAAAAAAA38",
+                "AAAAAAAAAAAAAAAAAAAAAA39",
+            );
+            "defaultConfigurationIsVisible" = 0;
+            "defaultConfigurationName" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA3B" = {
+            "isa" = "XCBuildConfiguration";
+            "buildSettings" = {
+                "GENERATE_INFOPLIST_FILE" = "YES";
+                "PRODUCT_BUNDLE_IDENTIFIER" = "$(CME_BUNDLE_IDENTIFIER).uitests";
+                "PRODUCT_NAME" = "$(TARGET_NAME)";
+                "TEST_TARGET_NAME" = "CMESpatialMarketCenter";
+            };
+            "name" = "Debug";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA3C" = {
+            "isa" = "XCBuildConfiguration";
+            "buildSettings" = {
+                "GENERATE_INFOPLIST_FILE" = "YES";
+                "PRODUCT_BUNDLE_IDENTIFIER" = "$(CME_BUNDLE_IDENTIFIER).uitests";
+                "PRODUCT_NAME" = "$(TARGET_NAME)";
+                "TEST_TARGET_NAME" = "CMESpatialMarketCenter";
+            };
+            "name" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA3D" = {
+            "isa" = "XCConfigurationList";
+            "buildConfigurations" = (
+                "AAAAAAAAAAAAAAAAAAAAAA3B",
+                "AAAAAAAAAAAAAAAAAAAAAA3C",
+            );
+            "defaultConfigurationIsVisible" = 0;
+            "defaultConfigurationName" = "Release";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA3E" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAAA5";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA3F" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAAA6";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA40" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAAA8";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA41" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAAAA";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA42" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAAAB";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA43" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAAAD";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA44" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA10";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA45" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA11";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA46" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA12";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA47" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA14";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA48" = {
+            "isa" = "PBXSourcesBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = (
+                "AAAAAAAAAAAAAAAAAAAAAA3E",
+                "AAAAAAAAAAAAAAAAAAAAAA3F",
+                "AAAAAAAAAAAAAAAAAAAAAA40",
+                "AAAAAAAAAAAAAAAAAAAAAA41",
+                "AAAAAAAAAAAAAAAAAAAAAA42",
+                "AAAAAAAAAAAAAAAAAAAAAA43",
+                "AAAAAAAAAAAAAAAAAAAAAA44",
+                "AAAAAAAAAAAAAAAAAAAAAA45",
+                "AAAAAAAAAAAAAAAAAAAAAA46",
+                "AAAAAAAAAAAAAAAAAAAAAA47",
+                "AAAAAAAAAAAAAAAAAAAAAA62",
+                "AAAAAAAAAAAAAAAAAAAAAA63",
+                "AAAAAAAAAAAAAAAAAAAAAA64",
+            );
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA49" = {
+            "isa" = "PBXBuildFile";
+            "productRef" = "AAAAAAAAAAAAAAAAAAAAAA2D";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA4A" = {
+            "isa" = "PBXBuildFile";
+            "productRef" = "AAAAAAAAAAAAAAAAAAAAAA2E";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA4B" = {
+            "isa" = "PBXBuildFile";
+            "productRef" = "AAAAAAAAAAAAAAAAAAAAAA2F";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA4C" = {
+            "isa" = "PBXFrameworksBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = (
+                "AAAAAAAAAAAAAAAAAAAAAA49",
+                "AAAAAAAAAAAAAAAAAAAAAA4A",
+                "AAAAAAAAAAAAAAAAAAAAAA4B",
+            );
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA4D" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA17";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA4E" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA19";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA4F" = {
+            "isa" = "PBXResourcesBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = (
+                "AAAAAAAAAAAAAAAAAAAAAA4D",
+                "AAAAAAAAAAAAAAAAAAAAAA4E",
+                "AAAAAAAAAAAAAAAAAAAAAA66",
+            );
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA50" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA1D";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA51" = {
+            "isa" = "PBXSourcesBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = (
+                "AAAAAAAAAAAAAAAAAAAAAA50",
+                "AAAAAAAAAAAAAAAAAAAAAA68",
+            );
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA52" = {
+            "isa" = "PBXBuildFile";
+            "productRef" = "AAAAAAAAAAAAAAAAAAAAAA30";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA53" = {
+            "isa" = "PBXBuildFile";
+            "productRef" = "AAAAAAAAAAAAAAAAAAAAAA31";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA54" = {
+            "isa" = "PBXFrameworksBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = (
+                "AAAAAAAAAAAAAAAAAAAAAA52",
+                "AAAAAAAAAAAAAAAAAAAAAA53",
+            );
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA55" = {
+            "isa" = "PBXResourcesBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = ();
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA56" = {
+            "isa" = "PBXContainerItemProxy";
+            "containerPortal" = "AAAAAAAAAAAAAAAAAAAAAAA1";
+            "proxyType" = 1;
+            "remoteGlobalIDString" = "AAAAAAAAAAAAAAAAAAAAAAA2";
+            "remoteInfo" = "CMESpatialMarketCenter";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA57" = {
+            "isa" = "PBXTargetDependency";
+            "target" = "AAAAAAAAAAAAAAAAAAAAAAA2";
+            "targetProxy" = "AAAAAAAAAAAAAAAAAAAAAA56";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA58" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA1E";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA59" = {
+            "isa" = "PBXSourcesBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = (
+                "AAAAAAAAAAAAAAAAAAAAAA58",
+            );
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA5A" = {
+            "isa" = "PBXFrameworksBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = ();
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA5B" = {
+            "isa" = "PBXResourcesBuildPhase";
+            "buildActionMask" = 2147483647;
+            "files" = ();
+            "runOnlyForDeploymentPostprocessing" = 0;
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA5C" = {
+            "isa" = "PBXContainerItemProxy";
+            "containerPortal" = "AAAAAAAAAAAAAAAAAAAAAAA1";
+            "proxyType" = 1;
+            "remoteGlobalIDString" = "AAAAAAAAAAAAAAAAAAAAAAA2";
+            "remoteInfo" = "CMESpatialMarketCenter";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA5D" = {
+            "isa" = "PBXTargetDependency";
+            "target" = "AAAAAAAAAAAAAAAAAAAAAAA2";
+            "targetProxy" = "AAAAAAAAAAAAAAAAAAAAAA5C";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA5E" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "BundledDashboard.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA5F" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "DashboardWebView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA60" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "MarketDashboardView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA61" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA5E",
+                "AAAAAAAAAAAAAAAAAAAAAA5F",
+                "AAAAAAAAAAAAAAAAAAAAAA60",
+            );
+            "path" = "TradingDesk";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA62" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA5E";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA63" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA5F";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA64" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA60";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA65" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "folder";
+            "path" = "MarketDashboard";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA66" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA65";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA67" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "BundledDashboardTests.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA68" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA67";
+        };
+    };
+    "rootObject" = "AAAAAAAAAAAAAAAAAAAAAAA1";
+}

@@ -1,0 +1,45 @@
+body[data-demo-recording] .stage { min-height: 0; }
+body[data-demo-recording] .app-window { height: 780px; min-height: 780px; }
+body[data-demo-recording] .preview-footer { display: none; }
+body[data-demo-recording] * { cursor: none !important; }
+
+#recording-caption {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    width: 1480px;
+    min-height: 108px;
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 165px minmax(0, 1fr) 190px;
+    align-items: center;
+    gap: 24px;
+    border: 1px solid rgba(139, 216, 214, 0.22);
+    border-radius: 18px;
+    background: linear-gradient(115deg, rgba(26, 52, 67, 0.98), rgba(13, 32, 46, 0.98));
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+    z-index: 2147483000;
+    pointer-events: none;
+}
+
+#recording-chapter { font-size: 10px; line-height: 1.8; letter-spacing: 1.5px; color: #8bd6d0; }
+#recording-title { margin: 0 0 9px; color: #eef8fb; font-weight: 500; font-size: 25px; letter-spacing: -0.5px; }
+#recording-description { margin: 0; font-size: 13px; line-height: 1.6; color: #b2cbd8; }
+.recording-label { padding-left: 24px; border-left: 1px solid rgba(150, 206, 219, 0.16); color: #a9c7d2; font-size: 10px; letter-spacing: 1px; line-height: 1.8; }
+.recording-label span { color: #83d9c5; font-size: 11px; letter-spacing: 0; }
+
+#recording-pointer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 26px;
+    height: 31px;
+    z-index: 2147483600;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+}
+
+#recording-pointer svg { width: 100%; height: 100%; }
+#recording-pointer::before { content: ""; position: absolute; left: -12px; top: -12px; width: 30px; height: 30px; border: 2px solid #91e2d7; border-radius: 50%; background: rgba(132, 224, 208, 0.18); opacity: 0; transition: opacity 100ms ease; }
+#recording-pointer.pressed::before { opacity: 1; }

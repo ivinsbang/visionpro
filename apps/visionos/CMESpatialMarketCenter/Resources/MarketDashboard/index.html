@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" data-host="visionos">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src file:; style-src file:; img-src file: data:; connect-src 'none'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="CME-style spatial market dashboard bundled for offline visionOS use. All quotes, charts, depth, and trades are synthetic. No CME connections.">
+    <title>CME Spatial Market Center | Synthetic Market Desk</title>
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./dashboard.css">
+    <script src="./app.bundle.js" defer></script>
+  </head>
+  <body>
+    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+      <symbol id="icon-windows" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="14" rx="3"/><path d="M8 3h11a3 3 0 0 1 3 3v11M6 10h6"/></symbol>
+      <symbol id="icon-cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7Zm0 10v10M3 7l9 5 9-5M7.5 4.5l9 5"/></symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="16" cy="17" r="3"/></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+      <symbol id="icon-orbit" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol>
+      <symbol id="icon-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M6 14l4-4 4 3 6-8"/></symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+      <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M14 3h7v7M21 3l-9 9M10 21H3v-7M3 21l9-9"/></symbol>
+    </svg>
+
+    <header class="preview-header">
+      <a class="preview-brand" href="#markets" aria-label="CME Spatial Market Center market desk">
+        <span class="brand-symbol"><svg class="icon"><use href="#icon-orbit"/></svg></span>
+        <span>CME <strong>Spatial Market Center</strong></span>
+      </a>
+      <div class="preview-header-actions">
+        <span class="local-indicator"><span class="status-dot"></span> Local simulation</span>
+        <button class="quiet-button" id="enter-spatial-desk" aria-controls="spatial-desk" aria-expanded="false"><svg class="icon"><use href="#icon-cube"/></svg> 3D desk</button>
+        <button class="quiet-button" id="reset-layout"><svg class="icon"><use href="#icon-reset"/></svg> Reset layout</button>
+      </div>
+    </header>
+
+    <main class="stage" aria-label="Spatial market workspace preview">
+      <div class="ambient-orbit" aria-hidden="true"></div>
+      <section class="app-window" aria-label="Market Center">
+        <aside class="sidebar">
+          <div class="sidebar-brand">
+            <span class="brand-symbol large"><svg class="icon"><use href="#icon-orbit"/></svg></span>
+            <span>Market<br><strong>Center</strong></span>
+          </div>
+          <p class="eyebrow sidebar-label">Workspace</p>
+          <nav class="navigation" aria-label="Main navigation">
+            <button class="navigation-item active" data-page="markets" aria-current="page"><svg class="icon"><use href="#icon-chart"/></svg> Market desk</button>
+            <button class="navigation-item" data-page="paper"><svg class="icon"><use href="#icon-arrow"/></svg> Paper trading</button>
+            <button class="navigation-item" data-page="portfolio"><svg class="icon"><use href="#icon-shield"/></svg> Portfolio &amp; risk</button>
+            <button class="navigation-item" data-page="overview"><svg class="icon"><use href="#icon-grid"/></svg> Overview</button>
+            <button class="navigation-item" data-page="workspace"><svg class="icon"><use href="#icon-windows"/></svg> Spatial workspace</button>
+            <button class="navigation-item" data-page="settings"><svg class="icon"><use href="#icon-settings"/></svg> Settings</button>
+          </nav>
+          <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            <div><strong>Synthetic preview</strong><span>No external connections</span></div>
+          </div>
+        </aside>
+
+        <div class="workspace-content">
+          <header class="window-header"><span id="page-heading">Market desk</span><span class="window-status" id="header-feed-time">LOCAL SYNTHETIC ENGINE</span></header>
+          <div class="content-scroll">
+            <section class="page" id="page-markets" aria-label="Market desk">
+              <div class="market-heading">
+                <div><p class="eyebrow accent">A DIFFERENT PERSPECTIVE ON MARKETS</p><h1>Your markets, in focus.</h1><p>A spatial futures workspace. A completely local simulation.</p></div>
+                <div class="desk-actions"><span class="feed-pill" id="feed-pill" data-state="streaming"><span class="status-dot"></span><span id="feed-state" role="status">Demo feed · Streaming</span></span><button class="quiet-button" id="toggle-feed">Pause feed</button><button class="quiet-button" data-open="spatial" aria-label="Open spatial screens"><svg class="icon"><use href="#icon-cube"/></svg> Spatial view</button></div>
+              </div>
+              <div class="demo-notice"><span class="mode-badge">SYNTHETIC DATA</span><span>All prices, depth, and prints are generated locally. Not a CME feed.</span></div>
+              <div class="feed-interrupted" id="feed-interrupted" role="alert" hidden><div><strong>Demo feed interrupted</strong><span>Quotes are held and marked stale. No external connection was lost.</span></div><button class="action-button" id="reconnect-feed">Reconnect demo feed</button></div>
+              <div class="quote-strip" id="quote-strip" aria-label="Synthetic market overview"></div>
+              <div class="desk-grid">
+                <aside class="market-panel market-browser" aria-labelledby="markets-title">
+                  <header class="panel-header"><h2 id="markets-title">Markets</h2><span class="panel-count" id="watchlist-count">4 saved</span></header>
+                  <div class="segmented-control market-tabs" role="group" aria-label="Market list"><button data-list="all" class="selected" aria-pressed="true">All markets</button><button data-list="watchlist" aria-pressed="false">Watchlist</button></div>
+                  <label class="market-search"><svg class="icon"><use href="#icon-search"/></svg><input id="market-search" type="search" placeholder="Find a contract" aria-label="Search demo contracts" autocomplete="off"></label>
+                  <select class="market-select" id="asset-filter" aria-label="Filter by asset class"><option value="all">All asset classes</option></select>
+                  <div class="market-list" id="market-list"></div>
+                  <div class="market-empty" id="market-empty" hidden><p id="market-empty-message">No matching demo contracts.</p><button class="action-button" id="show-all-markets">Show all markets</button></div>
+                  <p class="panel-hint" id="watchlist-storage">Watchlist lasts while this desk is open.</p>
+                </aside>
+                <section class="market-panel price-panel" aria-label="Selected demo contract">
+                  <header class="contract-heading"><div><div class="contract-identity"><span class="contract-symbol" id="selected-symbol">ES</span><span id="selected-category">Equity indexes</span><span class="contract-demo">DEMO</span></div><h2 id="selected-name">E-mini S&amp;P 500</h2></div><button class="icon-button" data-open="chart" aria-label="Open chart window" title="Open an independent chart"><svg class="icon"><use href="#icon-expand"/></svg></button></header>
+                  <div class="price-headline"><strong id="selected-price">—</strong><span class="price-change" id="selected-change">—</span><span class="price-reference">vs demo reference</span></div>
+                  <div class="chart-toolbar"><div class="segmented-control" role="group" aria-label="Chart range"><button data-range="15" aria-label="15 minutes" aria-pressed="false">15m</button><button data-range="60" class="selected" aria-label="1 hour" aria-pressed="true">1h</button><button data-range="240" aria-label="4 hours" aria-pressed="false">4h</button></div><div class="segmented-control" role="group" aria-label="Chart type"><button data-chart-mode="candles" class="selected" aria-pressed="true">Candles</button><button data-chart-mode="area" aria-pressed="false">Area</button></div></div>
+                  <div class="market-chart" id="market-chart" tabindex="0" role="group" aria-label="Interactive synthetic price chart" aria-describedby="chart-help"></div>
+                  <p class="chart-readout" id="chart-readout"></p>
+                  <dl class="session-stats"><div><dt>Demo high</dt><dd id="session-high">—</dd></div><div><dt>Demo low</dt><dd id="session-low">—</dd></div><div><dt>Demo volume</dt><dd id="session-volume">—</dd></div></dl>
+                  <div class="chart-footnote"><span id="price-unit">Index points</span><span>Generated history · UTC</span></div>
+                  <div class="paper-desk-action"><span>Practice with fictional funds.</span><button class="action-button" id="paper-trade-selected">Paper trade this contract <svg class="icon"><use href="#icon-arrow"/></svg></button></div>
+                </section>
+                <aside class="market-panel depth-panel" aria-labelledby="depth-title">
+                  <header class="panel-header"><h2 id="depth-title">Market depth</h2><span class="contract-demo" id="depth-symbol">ES · DEMO</span></header>
+                  <div class="depth-spread"><span>Illustrative spread</span><strong id="depth-spread">—</strong></div>
+                  <table class="depth-table"><caption class="visually-hidden">Eight levels of synthetic bids and asks for the selected contract</caption><thead><tr><th scope="col">Bid qty</th><th scope="col">Bid</th><th scope="col">Ask</th><th scope="col">Ask qty</th></tr></thead><tbody id="depth-rows"></tbody></table>
+                  <div class="depth-totals"><span class="positive" id="bid-total">— bid</span><span class="negative" id="ask-total">— ask</span></div>
+                  <meter id="depth-balance" min="0" max="100" value="50" aria-label="Bid share of displayed synthetic depth"></meter>
+                  <p class="panel-hint">Generated liquidity. Not executable.</p>
+                </aside>
+              </div>
+              <div class="desk-bottom-grid">
+                <section class="market-panel tape-panel" aria-labelledby="tape-title"><header class="panel-header"><h2 id="tape-title">Time &amp; sales</h2><span class="contract-demo">SIMULATED PRINTS</span></header><table class="tape-table"><caption class="visually-hidden">Generated trade prints, not actual exchange transactions</caption><thead><tr><th scope="col">Time (UTC)</th><th scope="col">Price</th><th scope="col">Qty</th><th scope="col">Side</th></tr></thead><tbody id="trade-rows"></tbody></table></section>
+                <aside class="market-panel spatial-launcher"><div><span class="eyebrow accent">BEYOND A SINGLE SCREEN</span><h2>Make the market your space.</h2><p>Keep another contract in its own chart, or explore three market screens in a spatial model.</p></div><div class="spatial-launch-actions"><button class="action-button primary" data-open="chart">Open chart screen <svg class="icon"><use href="#icon-expand"/></svg></button><button class="action-button" data-open="spatial">Open spatial preview <svg class="icon"><use href="#icon-cube"/></svg></button><button class="action-button" data-open="companion">Open companion <svg class="icon"><use href="#icon-windows"/></svg></button></div></aside>
+              </div>
+              <div class="market-provenance"><span><span class="status-dot"></span><span id="data-freshness">Fresh synthetic data</span></span><span id="market-generated-at">Generated locally</span><span id="feed-sequence">Sequence 00000</span></div>
+            </section>
+
+            <section class="page" id="page-paper" aria-label="Paper trading" hidden>
+              <div class="market-heading paper-heading"><div><p class="eyebrow accent">PRACTICE, NOT LIVE EXECUTION</p><h1>A place to learn by doing.</h1><p>Review a paper order. See how your simulated portfolio changes.</p></div><span class="mode-badge">PAPER ACCOUNT · SESSION ONLY</span></div>
+              <div class="demo-notice"><span class="mode-badge">FICTIONAL FUNDS</span><span>Starts with $100,000 demo USD. No deposits, broker, or exchange. Reloading clears this paper account.</span></div>
+              <div class="paper-feed-notice" id="paper-feed-notice"><span id="paper-feed-message">Waiting for local synthetic quotes.</span><button class="quiet-button" data-paper-page="markets">Open market desk</button></div>
+              <div class="paper-success" id="paper-success" role="status" hidden></div>
+              <div class="paper-layout">
+                <section class="market-panel paper-ticket-panel" aria-labelledby="paper-ticket-title">
+                  <header class="panel-header"><h2 id="paper-ticket-title">Paper order ticket</h2><span class="contract-demo">MARKET ONLY</span></header>
+                  <form id="paper-ticket" class="paper-ticket" novalidate>
+                    <label for="paper-contract">Demo contract</label><select id="paper-contract" class="paper-input" aria-describedby="paper-contract-assumptions"></select>
+                    <fieldset class="paper-side"><legend>Direction</legend><div><button type="button" data-paper-side="buy" class="selected" aria-pressed="true">Buy / Long</button><button type="button" data-paper-side="sell" aria-pressed="false">Sell / Short</button></div></fieldset>
+                    <label for="paper-quantity">Quantity (contracts)</label><input class="paper-input" id="paper-quantity" type="number" min="1" max="20" step="1" inputmode="numeric" value="1" autocomplete="off" aria-describedby="paper-quantity-help paper-ticket-error">
+                    <p class="paper-field-help" id="paper-quantity-help">1–20 per order. Opposite orders reduce or reverse a position.</p>
+                    <div class="paper-quote"><div><span>Synthetic bid</span><strong id="paper-bid">—</strong></div><div><span>Synthetic ask</span><strong id="paper-ask">—</strong></div></div>
+                    <dl class="paper-ticket-details"><div><dt>Current paper position</dt><dd id="paper-current-position">Flat</dd></div><div><dt>Demo value per tick</dt><dd id="paper-tick-value">—</dd></div><div><dt>Demo margin / contract</dt><dd id="paper-margin-unit">—</dd></div></dl>
+                    <p class="paper-field-help" id="paper-contract-assumptions">Tick values and margin are fictional USD parameters, not CME specifications.</p>
+                    <p class="paper-ticket-context" id="paper-ticket-context" hidden></p>
+                    <p class="paper-error" id="paper-ticket-error" role="alert" hidden></p>
+                    <button class="action-button primary paper-submit" id="paper-review-order" type="submit">Review paper order <svg class="icon"><use href="#icon-arrow"/></svg></button>
+                    <p class="paper-field-help">Nothing fills until you confirm. Synthetic full fills ignore queue priority, liquidity size, fees, and slippage.</p>
+                  </form>
+                </section>
+                <div class="paper-account-column">
+                  <div class="paper-summary-grid"><article class="paper-stat"><span>Paper equity</span><strong id="paper-equity">$100,000.00</strong><small>Demo USD · balance + open P/L</small></article><article class="paper-stat"><span>Free demo equity</span><strong id="paper-free-equity">$100,000.00</strong><small>After illustrative margin</small></article></div>
+                  <section class="market-panel" aria-labelledby="paper-fills-title"><header class="panel-header"><h2 id="paper-fills-title">Paper fill history</h2><span class="panel-count" id="paper-fill-count">0 fills</span></header><div class="paper-empty" id="paper-history-empty"><svg class="icon"><use href="#icon-shield"/></svg><h3>Start with a practice order.</h3><p>Your confirmed paper fills appear here. They never leave this device.</p></div><div class="paper-table-scroll" id="paper-history-table" role="region" aria-label="Paper fill history table" tabindex="0" hidden><table class="paper-table"><caption class="visually-hidden">Latest 100 simulated fills. Prices and realized P/L use fictional parameters.</caption><thead><tr><th scope="col">Paper ID / UTC</th><th scope="col">Contract</th><th scope="col">Side</th><th scope="col">Qty</th><th scope="col">Fill price</th><th scope="col">Realized P/L</th></tr></thead><tbody id="paper-fill-rows"></tbody></table></div><p class="paper-table-note">FIFO accounting · zero demo fees · latest 100 fills shown</p></section>
+                  <section class="paper-next-card"><span class="eyebrow accent">UNDERSTAND THE WHOLE POSITION</span><h2>Every order has a portfolio impact.</h2><p>Follow open profit/loss, fictional exposure, and illustrative margin in one place.</p><button class="action-button" data-paper-page="portfolio">View portfolio &amp; risk <svg class="icon"><use href="#icon-arrow"/></svg></button></section>
+                </div>
+              </div>
+              <div class="market-provenance"><span><span class="status-dot"></span><span id="paper-feed-status">Local synthetic engine</span></span><span id="paper-mark-time">Waiting for a synthetic mark</span><span>Memory only · no real account</span></div>
+            </section>
+
+            <section class="page" id="page-portfolio" aria-label="Portfolio and risk" hidden>
+              <div class="market-heading paper-heading"><div><p class="eyebrow accent">YOUR PAPER ACCOUNT, IN PERSPECTIVE</p><h1>See the impact. Stay in control.</h1><p>Generated marks. Fictional tick values. Transparent demo calculations.</p></div><button class="action-button primary" data-paper-page="paper">New paper order <svg class="icon"><use href="#icon-arrow"/></svg></button></div>
+              <div class="demo-notice"><span class="mode-badge">ILLUSTRATIVE RISK</span><span>Not official margin, a margin call, or financial advice. All amounts are fictional demo USD.</span></div>
+              <div class="paper-held-notice" id="portfolio-held-notice" role="status" hidden></div>
+              <div class="paper-metrics"><article class="paper-stat"><span>Paper equity</span><strong id="portfolio-equity">$100,000.00</strong><small id="portfolio-balance">Cash ledger: $100,000.00</small></article><article class="paper-stat"><span>Unrealized P/L</span><strong id="portfolio-unrealized">$0.00</strong><small>Marked to synthetic last price</small></article><article class="paper-stat"><span>Realized P/L</span><strong id="portfolio-realized">$0.00</strong><small>Closed quantities · FIFO</small></article><article class="paper-stat"><span>Demo margin used</span><strong id="portfolio-margin">$0.00</strong><small>Fixed fictional amount / contract</small></article></div>
+              <div class="paper-risk-layout">
+                <section class="market-panel paper-risk-card" aria-labelledby="portfolio-risk-title"><div class="paper-risk-heading"><h2 id="portfolio-risk-title">Illustrative margin monitor</h2><span class="paper-risk-badge" id="portfolio-risk-badge">No open positions</span></div><div class="paper-utilization"><strong id="portfolio-utilization">0.0%</strong><span>of paper equity</span></div><meter id="portfolio-margin-meter" min="0" max="100" value="0" aria-label="Illustrative margin as a percentage of paper equity"></meter><p id="portfolio-risk-message">No margin is reserved while the paper account is flat.</p><dl class="paper-risk-details"><div><dt>Free demo equity</dt><dd id="portfolio-free-equity">$100,000.00</dd></div><div><dt>Gross demo exposure</dt><dd id="portfolio-exposure">$0.00</dd></div><div><dt>Open positions</dt><dd id="portfolio-position-count">0</dd></div></dl></section>
+                <section class="market-panel paper-allocation-card" aria-labelledby="portfolio-allocation-title"><header class="panel-header"><h2 id="portfolio-allocation-title">Margin by asset class</h2><span class="contract-demo">DEMO USD</span></header><div id="portfolio-allocation"></div><p class="paper-table-note">Sum of absolute contracts × fictional margin. No offsets, stress model, or official exchange calculation.</p></section>
+              </div>
+              <section class="market-panel paper-positions-panel" aria-labelledby="portfolio-positions-title"><header class="panel-header"><h2 id="portfolio-positions-title">Open paper positions</h2><span class="contract-demo">SYNTHETIC MARKS</span></header><div class="paper-empty" id="portfolio-empty"><h3>Your paper portfolio is empty.</h3><p>Place a reviewed practice order to explore P/L and illustrative margin.</p><button class="action-button" data-paper-page="paper">Open paper ticket</button></div><div class="paper-table-scroll" id="portfolio-positions-table" role="region" aria-label="Open paper positions table" tabindex="0" hidden><table class="paper-table position-table"><caption class="visually-hidden">Open simulated positions and fictional USD P/L and margin estimates. Closing or reducing requires a reviewed paper order.</caption><thead><tr><th scope="col">Contract</th><th scope="col">Position</th><th scope="col">Average entry</th><th scope="col">Demo mark</th><th scope="col">Open P/L</th><th scope="col">Demo margin</th><th scope="col">Manage</th></tr></thead><tbody id="portfolio-position-rows"></tbody></table></div></section>
+              <details class="paper-assumptions"><summary>Calculation assumptions and simulation limits</summary><p>The paper ledger starts with $100,000 fictional USD. Cash ledger = starting balance + realized FIFO profit/loss. Equity = cash ledger + unrealized profit/loss. Margin is reserved, not deducted as a payment. Free demo equity = equity − illustrative margin.</p><p>P/L uses integer price ticks × fictional USD value per tick × signed contracts. Gross demo exposure uses synthetic price ticks × fictional tick value × absolute contracts. No FX conversion, commissions, financing, daily settlement, SPAN, maintenance margin, offsets, liquidation, or real execution is modeled.</p><p>The margin monitor warns at 70% utilization and flags exhausted equity at 100%. These thresholds are local demonstration rules, not financial risk guidance. Added exposure is rejected if illustrative margin exceeds paper equity. Risk-reducing closes remain possible with fresh synthetic quotes.</p><div class="paper-table-scroll" role="region" aria-label="Fictional paper contract parameters" tabindex="0"><table class="paper-table"><caption>Fictional parameters, not CME contract specifications</caption><thead><tr><th scope="col">Demo contract</th><th scope="col">Price increment</th><th scope="col">USD / tick</th><th scope="col">Demo margin / contract</th></tr></thead><tbody id="paper-assumption-rows"></tbody></table></div></details>
+              <div class="paper-account-reset"><div><strong>Session-only paper account</strong><p>Reloading or a confirmed reset clears positions and fills. Your browser watchlist is separate.</p></div><button class="quiet-button" id="paper-reset-account">Reset paper account</button></div>
+              <div class="market-provenance"><span><span class="status-dot"></span><span id="portfolio-feed-status">Local synthetic engine</span></span><span id="portfolio-mark-time">Waiting for a synthetic mark</span><span>No CME connection · no live orders</span></div>
+            </section>
+
+            <section class="page" id="page-overview" aria-label="Overview" hidden>
+              <div class="hero">
+                <div class="eyebrow accent"><span class="small-line"></span> A NEW PERSPECTIVE</div>
+                <h1>A wider view<br><span>of the market.</span></h1>
+                <p>Make room for a new perspective. Arrange your workspace and explore a market desk that lives around you.</p>
+              </div>
+              <div class="connection-card">
+                <div class="connection-symbol"><svg class="icon"><use href="#icon-orbit"/></svg></div>
+                <div><div class="eyebrow">WORKSPACE STATUS</div><h2>Seven markets. Zero external connections.</h2><p>Synthetic quotes, charts, and market depth</p></div>
+                <span class="mode-badge">SYNTHETIC</span>
+              </div>
+              <div class="launch-cards">
+                <article class="launch-card">
+                  <svg class="icon card-icon"><use href="#icon-windows"/></svg>
+                  <h2>Another perspective</h2>
+                  <p>Keep the selected market quote in a separate, movable window.</p>
+                  <button class="action-button" data-open="companion">Open companion <svg class="icon"><use href="#icon-arrow"/></svg></button>
+                </article>
+                <article class="launch-card">
+                  <svg class="icon card-icon"><use href="#icon-cube"/></svg>
+                  <h2>Explore in three dimensions</h2>
+                  <p>Explore three synthetic market screens in a spatial model.</p>
+                  <button class="action-button" data-open="spatial">Open spatial preview <svg class="icon"><use href="#icon-arrow"/></svg></button>
+                </article>
+              </div>
+            </section>
+
+            <section class="page" id="page-workspace" aria-label="Spatial workspace" hidden>
+              <div class="hero compact"><div class="eyebrow accent">YOUR SPACE, YOUR PERSPECTIVE</div><h1>Space to think.</h1><p>Open an independent chart, a linked quote companion, or a three-dimensional model of your synthetic markets. Drag each title bar to arrange your desk.</p></div>
+              <div class="workspace-illustration" aria-hidden="true"><div class="illustration-panel side"></div><div class="illustration-panel center"><svg class="icon"><use href="#icon-orbit"/></svg></div><div class="illustration-panel side"></div></div>
+              <div class="workspace-actions"><button class="action-button" data-open="chart">Open chart screen <svg class="icon"><use href="#icon-chart"/></svg></button><button class="action-button" data-open="companion">Open companion <svg class="icon"><use href="#icon-windows"/></svg></button><button class="action-button primary" data-open="spatial">Open spatial preview <svg class="icon"><use href="#icon-cube"/></svg></button></div>
+              <p class="interaction-help">Use a mouse or touch to move windows. Focus a window title and use arrow keys to move it with the keyboard.</p>
+            </section>
+
+            <section class="page" id="page-settings" aria-label="Settings" hidden>
+              <div class="hero compact"><div class="eyebrow accent">WORKSPACE PREFERENCES</div><h1>Keep it in view.</h1><p>Your workspace uses local preview content. No broker, account, or external market service is connected.</p></div>
+              <div class="settings-card">
+                <h2>Workspace</h2>
+                <dl><div><dt>Market data</dt><dd>Local synthetic engine</dd></div><div><dt>Order execution</dt><dd>Paper fills only · no live routing</dd></div><div><dt>Account connection</dt><dd>None · fictional session ledger</dd></div><div><dt>Bundled dashboard</dt><dd>0.3.1</dd></div></dl>
+              </div>
+              <div class="settings-card">
+                <h2>Demo feed controls</h2><p id="connection-status" role="status">Local synthetic feed is streaming. No CME connection.</p>
+                <button class="action-button" id="refresh-status"><svg class="icon"><use href="#icon-reset"/></svg> Refresh workspace status</button>
+                <button class="action-button" id="simulate-outage">Simulate feed outage</button>
+                <button class="action-button" id="restart-simulation">Restart synthetic session</button>
+                <p class="paper-field-help">If paper activity exists, restarting requires confirmation and also resets the fictional paper account.</p>
+              </div>
+              <div class="settings-card"><h2>What this prototype is</h2><p>Product names provide familiar context. Contract IDs, reference prices, history, increments, volume, depth, and trade prints are illustrative demo content, not official contract specifications or exchange records. Generated timestamps use this computer's clock in UTC.</p><p>Your demo watchlist stays in memory while this desk is open. Closing or reloading the desk resets it. There are no connected accounts, analytics, vendor SDKs, remote fonts, or market-data requests. Paper balances, positions, and fills stay in memory. Restarting a session preserves your watchlist.</p></div>
+            </section>
+          </div>
+          <footer class="window-footer"><svg class="icon"><use href="#icon-shield"/></svg> Synthetic environment · No order routing <span>Local engine · No CME connection</span></footer>
+        </div>
+        <div class="window-grab-bar" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <main class="spatial-desk" id="spatial-desk" aria-label="Interactive 3D market desk" hidden>
+      <header class="spatial-desk-header">
+        <div class="spatial-desk-brand"><span class="brand-symbol"><svg class="icon"><use href="#icon-cube"/></svg></span><div><strong>Spatial Market Center <span class="accent">/ 3D desk</span></strong><p>Working windows. One local synthetic session.</p></div></div>
+        <div class="spatial-desk-actions"><button class="quiet-button" id="spatial-start-tour">Feature tour</button><button class="quiet-button" id="exit-spatial-desk">Exit 3D <svg class="icon"><use href="#icon-close"/></svg></button></div>
+      </header>
+      <nav class="spatial-desk-toolbar" aria-label="3D desk controls">
+        <button class="quiet-button" id="spatial-room-view"><svg class="icon"><use href="#icon-windows"/></svg> Room view</button>
+        <button class="action-button primary" id="spatial-focus-desk">Focus desk <svg class="icon"><use href="#icon-expand"/></svg></button>
+        <span class="spatial-toolbar-divider" aria-hidden="true"></span>
+        <label class="visually-hidden" for="spatial-focus">Focus a 3D window</label><select id="spatial-focus"><option value="overview">All open windows</option><option value="desk">Market center</option><option value="chart">Independent chart</option><option value="companion">Linked quote</option><option value="spatial">Spatial model</option></select>
+        <label class="visually-hidden" for="spatial-feature">Explore a built feature</label><select id="spatial-feature"><option value="markets">Market desk</option><option value="paper">Paper trading</option><option value="portfolio">Portfolio &amp; risk</option><option value="overview">Overview</option><option value="workspace">Spatial workspace</option><option value="settings">Feed &amp; settings</option></select>
+        <details class="spatial-view-controls" id="spatial-view-controls"><summary>View controls</summary><div class="spatial-camera-controls">
+          <label for="spatial-zoom"><span>Window zoom <output id="spatial-zoom-value" for="spatial-zoom">100%</output></span><input id="spatial-zoom" type="range" min="65" max="125" value="100"></label>
+          <label for="spatial-orbit">Look left / right<input id="spatial-orbit" type="range" min="-20" max="20" value="-6"></label>
+          <label for="spatial-tilt">Look up / down<input id="spatial-tilt" type="range" min="-10" max="10" value="4"></label>
+          <label for="spatial-arrangement">Window arrangement<select id="spatial-arrangement"><option value="arc">Curved desk</option><option value="flat">Flat panorama</option></select></label>
+          <button class="quiet-button" id="spatial-recenter"><svg class="icon"><use href="#icon-reset"/></svg> Recenter windows</button>
+        </div></details>
+      </nav>
+      <div class="spatial-viewport" id="spatial-viewport">
+        <div class="spatial-room-horizon" aria-hidden="true"></div><div class="spatial-room-glow" aria-hidden="true"></div>
+        <div class="spatial-world" id="spatial-world"><section class="spatial-main-frame" id="spatial-main-frame" aria-label="Market center 3D window"><button class="drag-handle spatial-frame-handle" aria-label="Move market center window" aria-describedby="move-help"><span class="drag-dots" aria-hidden="true"></span> Market Center <small>LOCAL ENGINE / PAPER ONLY</small></button></section></div>
+      </div>
+      <section class="spatial-tour-panel" id="spatial-tour-panel" aria-label="Built features walkthrough" hidden>
+        <div class="spatial-tour-copy"><p class="eyebrow">FEATURE TOUR <span id="spatial-tour-count">1 / 9</span></p><h2 id="spatial-tour-title">Your whole workspace, in view.</h2><p id="spatial-tour-detail"></p></div>
+        <div class="spatial-tour-actions"><button class="quiet-button" id="spatial-tour-previous">Previous</button><button class="action-button primary" id="spatial-tour-next">Next feature <svg class="icon"><use href="#icon-arrow"/></svg></button><button class="icon-button" id="spatial-tour-close" aria-label="Close feature tour"><svg class="icon"><use href="#icon-close"/></svg></button></div>
+      </section>
+      <footer class="spatial-desk-footer"><strong id="spatial-view-label">Room view · Focus a window for full-size controls</strong><span><span class="status-dot"></span> Synthetic only · No CME connection</span><span>Browser 3D demo, not Vision Pro footage · Esc exits</span></footer>
+    </main>
+
+    <dialog class="paper-dialog" id="paper-review-dialog" aria-labelledby="paper-review-title" aria-describedby="paper-review-disclosure">
+      <span class="mode-badge">PAPER ORDER · NO REAL EXECUTION</span><h2 id="paper-review-title">Review your paper order</h2><p id="paper-review-description"></p>
+      <dl class="paper-review-details"><div><dt>Indicative fill price</dt><dd id="paper-review-price">—</dd></div><div><dt>Resulting position</dt><dd id="paper-review-position">—</dd></div><div><dt>Projected paper equity</dt><dd id="paper-review-equity">—</dd></div><div><dt>Projected demo margin</dt><dd id="paper-review-margin">—</dd></div><div><dt>Projected free equity</dt><dd id="paper-review-free">—</dd></div></dl>
+      <p id="paper-review-disclosure">Confirm uses the latest fresh synthetic ask for a buy or bid for a sell. Price and estimates can change before confirmation. Full fills, fictional parameters, zero fees. Nothing reaches an exchange.</p>
+      <p class="paper-review-timing" id="paper-review-timing"></p><p class="paper-error" id="paper-review-error" role="alert" hidden></p>
+      <div class="paper-dialog-actions"><button type="button" class="quiet-button" id="paper-review-back" autofocus>Back to ticket</button><button type="button" class="quiet-button" id="paper-review-refresh">Refresh review</button><button type="button" class="action-button primary" id="paper-confirm-order">Confirm paper order</button></div>
+    </dialog>
+
+    <dialog class="paper-dialog" id="paper-reset-dialog" aria-labelledby="paper-reset-title" aria-describedby="paper-reset-description"><span class="mode-badge">LOCAL SESSION RESET</span><h2 id="paper-reset-title">Reset paper account?</h2><p id="paper-reset-description"></p><div class="paper-dialog-actions"><button class="quiet-button" id="paper-reset-cancel" type="button" autofocus>Keep my session</button><button class="action-button paper-destructive" id="paper-reset-confirm" type="button">Confirm paper reset</button></div></dialog>
+
+    <section class="floating-window companion-window" id="window-companion" role="dialog" aria-labelledby="companion-title" hidden>
+      <header class="floating-header"><button class="drag-handle" aria-label="Move companion window" aria-describedby="move-help"><span class="drag-dots" aria-hidden="true"></span><span id="companion-title">Workspace companion</span></button><button class="icon-button" data-close="companion" aria-label="Close companion window"><svg class="icon"><use href="#icon-close"/></svg></button></header>
+      <div class="floating-content"><span class="mode-badge">SYNTHETIC PREVIEW</span><h2 id="companion-market">ES · E-mini S&amp;P 500</h2><strong class="companion-price" id="companion-price">—</strong><p class="price-change" id="companion-change">—</p><div class="companion-sparkline" id="companion-sparkline" aria-hidden="true"></div><p>Linked to the contract selected on your market desk.</p><div class="companion-status"><span class="status-dot"></span><div><strong id="companion-feed-state">Fresh synthetic data</strong><span id="companion-generated-at">Local synthetic engine</span></div></div></div>
+    </section>
+
+    <section class="floating-window spatial-window" id="window-spatial" role="dialog" aria-labelledby="spatial-title" hidden>
+      <header class="floating-header"><button class="drag-handle" aria-label="Move spatial preview" aria-describedby="move-help"><span class="drag-dots" aria-hidden="true"></span><span id="spatial-title">Spatial preview</span></button><button class="icon-button" data-close="spatial" aria-label="Close spatial preview"><svg class="icon"><use href="#icon-close"/></svg></button></header>
+      <div class="volume-viewport" role="img" aria-label="Three spatial screens showing synthetic ES, NQ, and CL prices and charts. This is a browser model, not native visionOS."><div class="model-layout"><div class="model-platform"></div><div class="model-panel left" data-spatial-symbol="NQ"><span>NQ</span><strong class="model-price">—</strong><div class="model-sparkline"></div><small>SYNTHETIC</small></div><div class="model-panel middle" data-spatial-symbol="ES"><span>ES</span><strong class="model-price">—</strong><div class="model-sparkline"></div><small>SYNTHETIC</small></div><div class="model-panel right" data-spatial-symbol="CL"><span>CL</span><strong class="model-price">—</strong><div class="model-sparkline"></div><small>SYNTHETIC</small></div></div></div>
+      <div class="volume-controls"><label for="viewing-angle">Viewing angle</label><input id="viewing-angle" type="range" min="-60" max="30" value="-24"><span id="angle-value">-24&deg;</span></div>
+      <p class="volume-caption" id="spatial-feed-label">Synthetic market screens · Local engine</p>
+    </section>
+
+    <section class="floating-window chart-window" id="window-chart" role="dialog" aria-labelledby="chart-window-title" hidden>
+      <header class="floating-header"><button class="drag-handle" aria-label="Move chart window" aria-describedby="move-help"><span class="drag-dots" aria-hidden="true"></span><span id="chart-window-title">Independent chart screen</span></button><button class="icon-button" data-close="chart" aria-label="Close chart window"><svg class="icon"><use href="#icon-close"/></svg></button></header>
+      <div class="detached-chart-controls"><label class="visually-hidden" for="detached-symbol">Chart screen contract</label><select class="market-select" id="detached-symbol"></select><span class="mode-badge">SYNTHETIC</span></div>
+      <div class="detached-quote"><strong id="detached-price">—</strong><span class="price-change" id="detached-change">—</span></div>
+      <div class="market-chart detached-chart" id="detached-chart" tabindex="0" role="group" aria-label="Independent synthetic chart" aria-describedby="chart-help"></div><p class="chart-readout" id="detached-readout"></p><p class="volume-caption" id="detached-feed-label">Independent contract · Last 60 minutes · Synthetic data</p>
+    </section>
+
+    <footer class="preview-footer"><span>OFFLINE VISIONOS PROTOTYPE</span><p>Independent CME-style mockup. Not a CME service. Web panels stay inside this app window.</p><span>STEP 04A / PAPER &amp; PORTFOLIO</span></footer>
+    <p class="visually-hidden" id="move-help">Drag to move this window. With this control focused, use arrow keys to move it. Hold Shift for larger steps.</p>
+    <p class="visually-hidden" id="chart-help">Move the pointer over the chart or use Left and Right arrow keys to inspect generated candles. Home and End select the first and last candle. Escape clears inspection. All values are synthetic.</p>
+    <p class="visually-hidden" id="announcements" role="status" aria-live="polite"></p>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #101b27; }
+body { display: grid; place-items: center; font-family: "Segoe UI", sans-serif; }
+#film { display: block; width: 100%; height: 100%; object-fit: contain; }
+#loading { position: fixed; color: #d7eef3; background: #182c3d; border-radius: 16px; padding: 22px 30px; }
+#loading[hidden] { display: none; }
