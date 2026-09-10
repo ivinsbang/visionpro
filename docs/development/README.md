@@ -81,7 +81,9 @@ Node.js and Python are not required for Xcode to build and run the included bund
 The app now opens the offline synthetic market dashboard in its main window.
 **Native workspace** opens the original overview/settings shell and companion
 controls. **Native volume** opens the neutral RealityKit preview. Dashboard web
-panels remain inside one native window. Paper orders affect only a fictional local
+panels start inside one native window. **Enter 360° view** moves that same desk into
+an immersive attachment with five surrounding read-only summaries; see the
+[native 360° guide](visionos-360-view.md). Paper orders affect only a fictional local
 ledger; there is no real order placement or real feed.
 See the [simulator guide](visionos-simulator.md) for the full smoke test and limits.
 

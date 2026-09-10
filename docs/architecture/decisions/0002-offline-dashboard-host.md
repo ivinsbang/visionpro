@@ -4,6 +4,9 @@
 
 Accepted for the owner's Step 3a simulator-compatibility request. Native build,
 Apple Simulator, and headset validation remain pending on a supported Mac.
+Extended for the owner's subsequent single-screen simulator report by the
+[native 360-degree presentation](../../development/visionos-360-view.md), while
+retaining the shared dashboard, ledger, and file-only host.
 
 ## Context
 
@@ -40,7 +43,10 @@ The native bundle can launch without the development laptop/server, and publishi
 or signing is unnecessary for simulator validation. Generated resources must be
 updated with source changes; a deterministic manifest and CI check enforce this.
 
-This is a compatibility adapter, not a fully native financial UI, an immersive
-trading room, or App Store readiness. Gaze/pinch behavior, accessibility, memory,
+This remains a compatibility adapter, not a fully native financial UI or App Store
+readiness. The later 360-degree extension retains the same web view in an immersive
+attachment and reads display snapshots for five surrounding summary screens.
+It adds no script-message handlers or native order implementation.
+Gaze/pinch behavior, accessibility, memory,
 Swift/SDK compilation, and real-device performance still require Apple validation.
 The native shell's `MarketData` provider does not receive the JavaScript quotes.

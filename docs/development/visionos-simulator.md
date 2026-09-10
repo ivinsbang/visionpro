@@ -8,6 +8,11 @@ broker account, or internet access is required by the running dashboard.
 The included Step 4a web screens add a session-only paper account and illustrative
 portfolio/risk, not a SwiftUI financial rewrite or live execution.
 
+For screens surrounding you, rebuild this version and choose **Enter 360° view**
+in the native toolbar. The new RealityKit room places six screens around the viewer
+while preserving the shared session. See the [360° view guide](visionos-360-view.md)
+for camera controls, screen positions, and the required Mac validation.
+
 This is simulator-targeted source, not a verified native binary. Windows checks
 exercise the web assets and project structure, not Apple's simulator or SDK.
 
@@ -82,8 +87,8 @@ and is loaded with `loadFileURL`, with read access restricted to that folder.
 2. Select CL or NQ. Confirm the price, main chart, depth, and trade prints change
    together. Change candle/area mode and chart range.
 3. Star ZC and switch to Watchlist. In the native app, these preferences exist only
-   in the open desk's memory. Closing or reloading the desk resets them; navigating
-   between its web pages or opening the native workspace does not.
+   in the app session's memory. Quitting or reloading resets them; navigating
+   between web pages, opening the native workspace, or entering/leaving 360° does not.
 4. Open a chart screen, select GC there, and confirm the main desk keeps its own
    selection. Move its title with the pointer or arrow keys; Shift moves farther.
 5. Pause the feed and confirm timestamps stop changing. In the dashboard's
@@ -119,10 +124,14 @@ and is loaded with `loadFileURL`, with read access restricted to that folder.
     selector and tour, then review/cancel a paper order. Confirm Escape cancels the
     dialog before exiting 3D, and exit preserves the paper account. The panorama
     remains CSS content inside this web view, not new native system windows.
+15. Choose **Enter 360° view** in the native toolbar. Turn the simulator camera
+    through a full circle, inspect the five surrounding summaries, then choose
+    **Return to window**. Follow the [360° checks](visionos-360-view.md#validation)
+    to verify paper-state continuity, native attachment input, and system dismissal.
 
 Simulator uses mouse/trackpad and keyboard input. Gaze/pinch comfort, VoiceOver,
 performance, and actual spatial interaction still need Apple Vision Pro testing.
-No raw eye/hand tracking, voice search, immersive market scene, or real order
+No raw eye/hand tracking, voice search, or real order
 routing is implemented. Windows browser checks of these paper workflows are not
 native Simulator tests; record the Mac smoke-test result separately.
 

@@ -125,6 +125,7 @@
             "children" = (
                 "AAAAAAAAAAAAAAAAAAAAAAA5",
                 "AAAAAAAAAAAAAAAAAAAAAAA6",
+                "AAAAAAAAAAAAAAAAAAAAAA69",
             );
             "path" = "App";
             "sourceTree" = "<group>";
@@ -139,6 +140,7 @@
             "isa" = "PBXGroup";
             "children" = (
                 "AAAAAAAAAAAAAAAAAAAAAAA8",
+                "AAAAAAAAAAAAAAAAAAAAAA6B",
             );
             "path" = "Navigation";
             "sourceTree" = "<group>";
@@ -235,6 +237,7 @@
             "children" = (
                 "AAAAAAAAAAAAAAAAAAAAAA13",
                 "AAAAAAAAAAAAAAAAAAAAAA15",
+                "AAAAAAAAAAAAAAAAAAAAAA73",
             );
             "path" = "Scenes";
             "sourceTree" = "<group>";
@@ -305,6 +308,7 @@
             "children" = (
                 "AAAAAAAAAAAAAAAAAAAAAA1D",
                 "AAAAAAAAAAAAAAAAAAAAAA67",
+                "AAAAAAAAAAAAAAAAAAAAAA74",
             );
             "path" = "CMESpatialMarketCenterTests";
             "sourceTree" = "<group>";
@@ -609,6 +613,11 @@
                 "AAAAAAAAAAAAAAAAAAAAAA62",
                 "AAAAAAAAAAAAAAAAAAAAAA63",
                 "AAAAAAAAAAAAAAAAAAAAAA64",
+                "AAAAAAAAAAAAAAAAAAAAAA6A",
+                "AAAAAAAAAAAAAAAAAAAAAA6C",
+                "AAAAAAAAAAAAAAAAAAAAAA6E",
+                "AAAAAAAAAAAAAAAAAAAAAA70",
+                "AAAAAAAAAAAAAAAAAAAAAA72",
             );
             "runOnlyForDeploymentPostprocessing" = 0;
         };
@@ -662,6 +671,7 @@
             "files" = (
                 "AAAAAAAAAAAAAAAAAAAAAA50",
                 "AAAAAAAAAAAAAAAAAAAAAA68",
+                "AAAAAAAAAAAAAAAAAAAAAA75",
             );
             "runOnlyForDeploymentPostprocessing" = 0;
         };
@@ -760,6 +770,8 @@
                 "AAAAAAAAAAAAAAAAAAAAAA5E",
                 "AAAAAAAAAAAAAAAAAAAAAA5F",
                 "AAAAAAAAAAAAAAAAAAAAAA60",
+                "AAAAAAAAAAAAAAAAAAAAAA6D",
+                "AAAAAAAAAAAAAAAAAAAAAA6F",
             );
             "path" = "TradingDesk";
             "sourceTree" = "<group>";
@@ -795,6 +807,74 @@
         "AAAAAAAAAAAAAAAAAAAAAA68" = {
             "isa" = "PBXBuildFile";
             "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA67";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA69" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "DashboardSession.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA6A" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA69";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA6B" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "ImmersiveDeskModel.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA6C" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA6B";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA6D" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "SurroundDashboardSnapshot.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA6E" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA6D";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA6F" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "SurroundPanelView.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA70" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA6F";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA71" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "ImmersiveDeskScene.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA72" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA71";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA73" = {
+            "isa" = "PBXGroup";
+            "children" = (
+                "AAAAAAAAAAAAAAAAAAAAAA71",
+            );
+            "path" = "Immersive";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA74" = {
+            "isa" = "PBXFileReference";
+            "lastKnownFileType" = "sourcecode.swift";
+            "path" = "ImmersiveDeskTests.swift";
+            "sourceTree" = "<group>";
+        };
+        "AAAAAAAAAAAAAAAAAAAAAA75" = {
+            "isa" = "PBXBuildFile";
+            "fileRef" = "AAAAAAAAAAAAAAAAAAAAAA74";
         };
     };
     "rootObject" = "AAAAAAAAAAAAAAAAAAAAAAA1";

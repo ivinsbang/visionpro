@@ -391,5 +391,9 @@ export function createMarketDashboard(announce, { sessionOnly = false, onStateCh
     }, 1500);
     document.addEventListener("visibilitychange", renderStatus);
 
-    return { cancelStatusRefresh, selectedContract: () => selectedSymbol };
+    return {
+        cancelStatusRefresh,
+        selectedContract: () => selectedSymbol,
+        selectedHistory: () => snapshot.markets.find((market) => market.symbol === selectedSymbol).bars.slice(-60).map((bar) => bar.close)
+    };
 }

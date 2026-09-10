@@ -1,6 +1,6 @@
 # Test organization
 
-The current suites cover 44 model/packaging/film units, 36 browser journeys, and 18
+The current suites cover 44 model/packaging/film units, 36 browser journeys, and 32
 bundled dashboard checks across Chrome and WebKit. Native package, app-unit,
 resource-policy, and UI tests have not been executed in this
 workspace; run `bash scripts/validate-native.sh test` on a supported Mac.
@@ -14,9 +14,9 @@ See [development setup](../docs/development/README.md).
 | `apps/preview-web/tests/spatial-desk.spec.js` | Actual DOM/session reuse in 3D, independent windows, guided-tour safety, movement, camera controls, modal focus, mobile and compact layouts |
 | `packages/MarketCore/Tests/` | Missing, stale, future, and invalid timestamp handling |
 | `packages/MarketData/Tests/` | Synthetic/no-feed semantics and provider cancellation |
-| `apps/preview-web/tests/visionos.spec.js` | Direct-file Chrome/WebKit loading, offline policy, session-only watchlist/paper accounts, paper/risk flows, and compact embedded controls |
-| `apps/visionos/CMESpatialMarketCenterTests/` | Startup/recovery/cancellation, bundled resources, and file-navigation restrictions |
-| `apps/visionos/CMESpatialMarketCenterUITests/` | Bundled desk readiness/pause, preview labeling, native navigation, and companion open/close |
+| `apps/preview-web/tests/visionos.spec.js` | Direct-file Chrome/WebKit loading, offline policy, session-only accounts, paper/risk flows, compact controls, and native surround projections with held/suspended-clock freshness |
+| `apps/visionos/CMESpatialMarketCenterTests/` | Startup/recovery/cancellation, resources/navigation restrictions, immersive lifecycle, inward-facing layout, retained view ownership, and snapshot decoding |
+| `apps/visionos/CMESpatialMarketCenterUITests/` | Bundled readiness/pause, native navigation, companion open/close, and a paused-feed immersive round trip |
 | `tests/integration/` | Reserved cross-module and gateway/provider contracts |
 | `tests/performance/` | Reserved feed throughput, rendering, memory, and device budgets |
 | `tests/accessibility/` | Reserved manual accessibility and comfort scenarios |

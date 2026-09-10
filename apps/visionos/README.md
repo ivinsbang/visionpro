@@ -31,7 +31,7 @@ native JavaScript message handlers, broker integrations, or network fallbacks.
 
 WebKit uses a nonpersistent data store; the native watchlist stays in JavaScript
 memory only. Paper balances, positions, and fills are also memory-only.
-Closing/reloading the desk resets them. Reload requires confirmation and names
+Quitting the app or reloading the desk resets them. Reload requires confirmation and names
 the paper state that will be lost.
 Load failures and renderer termination show a retry screen instead of a blank view.
 
@@ -44,7 +44,14 @@ Value-based secondary windows reuse a matching window when opened repeatedly.
 The dashboard's floating chart/quote/CSS panels remain inside the web view.
 Its **3D desk** mode arranges those same working elements in a CSS perspective
 scene and includes the feature tour. Exiting restores the flat dashboard without
-resetting market or paper state. This is not an additional native immersive scene.
+resetting market or paper state.
+
+**Enter 360° view** in the native toolbar opens a full immersive RealityKit room.
+The interactive dashboard moves into the front attachment; five surrounding screens
+show read-only market, depth, portfolio, risk/fills, and watchlist projections of
+that same session. `DashboardSession` retains one web view across scene transitions.
+**Return to window** restores the main window without clearing the ledger. See the
+[360° run guide and native validation checklist](../../docs/development/visionos-360-view.md).
 
 Runtime resources include an accent color catalog and a privacy manifest. No
 microphone, real-account, broker, or external market-data access is implemented.

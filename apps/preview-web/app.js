@@ -1,6 +1,7 @@
 import { createMarketDashboard } from "./market/dashboard.js";
 import { createPaperWorkspace } from "./market/paper-trading.js";
 import { createSpatialDesk } from "./spatial/desk.js";
+import { readSurroundSnapshot } from "./hosts/visionos-surround.js";
 
 const pageNames = new Map([
     ["markets", "Market desk"],
@@ -184,4 +185,9 @@ document.querySelector("#reset-layout").addEventListener("click", () => {
 });
 
 document.documentElement.dataset.dashboardReady = "true";
+if (document.documentElement.dataset.host === "visionos") {
+    Object.defineProperty(window, "readNativeDeskSnapshot", {
+        value: () => readSurroundSnapshot(document, marketDashboard.selectedHistory())
+    });
+}
 if (new URL(window.location.href).searchParams.get("demo") === "3d") spatialDesk.enter();

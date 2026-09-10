@@ -40,7 +40,7 @@ test("native manifest hashes every runtime file without machine paths or timesta
     assert.equal(manifest.mode, "synthetic");
     assert.deepEqual(manifest.bundler, { name: "esbuild", version: "0.28.2", target: "safari17" });
     assert.equal(Object.keys(manifest.files).length, 4);
-    assert.equal(Object.keys(manifest.sources).length, 18);
+    assert.equal(Object.keys(manifest.sources).length, 19);
     for (const [filename, expected] of Object.entries(manifest.files)) {
         assert.equal(createHash("sha256").update(files.get(filename)).digest("hex"), expected);
     }

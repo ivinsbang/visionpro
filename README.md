@@ -16,6 +16,11 @@ the native workspace, companion window, and RealityKit volume. Native compilatio
 and simulator/device tests have not run on this Windows laptop. This is a local
 prototype, not a production trading platform or a Windows visionOS emulator.
 
+For surrounding screens in Simulator, rebuild the native app and select
+**Enter 360° view** above the dashboard. The new six-screen immersive room reuses
+the same synthetic session and paper account. See the [360° run guide](docs/development/visionos-360-view.md);
+native validation of this change remains pending on a Mac.
+
 ## Run the Windows preview
 
 From the repository root, with Python 3 installed:
@@ -121,16 +126,19 @@ tests, input controls, and troubleshooting.
 
 - Offline CME-style dashboard in the main visionOS window, with startup/error/retry UI.
 - File-only web resources, restricted navigation, no network APIs or native trading bridge.
-- A temporary in-memory watchlist; closing or reloading the native desk resets it.
+- A temporary in-memory watchlist; quitting the app or reloading the desk resets it.
 - The same session-only paper account and portfolio screens inside the bundled dashboard.
 - Native workspace button opens the original overview, workspace, and settings screens.
 - A separate companion window shares the native workspace's shell status.
 - A resizable RealityKit volume showing three neutral display panels.
+- A native **Enter 360° view** mode with the interactive desk and five surrounding
+  summaries of the same synthetic market and paper account.
 - Reproducible resource packaging, Chrome/WebKit bundle tests, native test targets, and CI.
 
-The market charts and CSS spatial panels remain web content inside one native
-window, not separate native chart windows or an immersive market scene. The
-RealityKit volume is a separate neutral preview, not connected to the quote engine.
+The interactive market charts and CSS panels remain shared web content, hosted in
+the main window or the front immersive attachment. The 360-degree room's surrounding
+summaries read that same session; the small RealityKit volume remains a separate
+neutral preview.
 A full SwiftUI financial rewrite, calendar, education, voice search, account
 connections, and real market feeds remain later work. Paper trading and portfolio
 calculations currently use the shared JavaScript ledger, not native Swift views.

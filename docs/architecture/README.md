@@ -9,7 +9,9 @@ It does not introduce an empty Swift target or duplicate financial implementatio
 
 ```text
 CMESpatialMarketCenter app
-|-- DashboardWebView ------> bundled synthetic browser dashboard
+|-- DashboardSession -----> bundled synthetic browser dashboard (one WKWebView)
+|   `-- DashboardWebView -> window OR immersive attachment
+|-- ImmersiveDeskScene ---> read-only projections from that same dashboard
 |-- MarketCore
 |-- MarketData -----------> MarketCore
 `-- SpatialUI
@@ -39,6 +41,10 @@ in `Navigation`, while scene declarations belong in `Scenes`. The foundation use
 three planar window groups and one neutral volumetric preview. Value-based secondary window
 groups avoid creating another copy for the same window value. The preview fits its
 geometry to the available volume bounds. No third-party state library is used.
+The simulator's 360-degree presentation adds a full `ImmersiveSpace` with the
+interactive desk and five inward-facing read-only attachments spaced around the
+viewer. `ImmersiveDeskModel` coordinates opening, cancellation, returning to the
+window, system dismissal, and room arrangement.
 
 ## Windows review companion
 
@@ -97,10 +103,26 @@ nonpersistent, and the native-host watchlist uses memory rather than local stora
 Readiness is checked after JavaScript startup; load/process failures show a retry UI.
 
 The same browser engine is bundled with pinned esbuild, not rewritten into the
-native `MarketData` provider. There is no native JavaScript message bridge. Native
-workspace and volume controls open real system windows; the dashboard's floating
-panels remain inside the web view. See the
+native `MarketData` provider. Native workspace and volume controls open real system
+windows; the dashboard's floating panels remain inside the web view. See the
 [offline host decision](decisions/0002-offline-dashboard-host.md).
+
+`DashboardSession` retains one web view at app scope. `DashboardWebView` reparents
+it between UIKit containers in the main window and the front immersive attachment.
+The launch window closes only after the immersive space opens; returning or system
+dismissal restores it. These transitions never navigate/reload the page or create
+another synthetic engine or paper ledger. Only a deliberate reload or app termination
+resets that session. The main window, like secondary windows, uses a matching scene
+value to avoid creating additional hosts for the same desk.
+
+`hosts/visionos-surround.js` exposes a native-only, read-only snapshot function that
+projects already-formatted dashboard values and the selected market's existing
+history. While the room is open, the native host polls it with `evaluateJavaScript`
+and decodes a bounded versioned schema. Generic SwiftUI cards/tables and a price
+line display that projection; no Swift accounting or order implementation is added.
+The source's original quote time and shared freshness rule remain authoritative;
+failed or delayed native reads display held values. There is no script-message
+handler or native order command. See the [360-degree guide](../development/visionos-360-view.md).
 
 ## Data and operational boundaries
 

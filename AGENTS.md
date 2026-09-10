@@ -15,6 +15,8 @@
   The owner then requested a 3D Windows demo of all built features; this authorizes
   the shared interactive 3D desk and its local narrated walkthrough, not new
   financial capabilities or integrations. Reuse the actual dashboard and ledger.
+  The owner's report that Simulator shows only one screen authorizes a native
+  360-degree presentation of that same desk and read-only surrounding summaries.
   Calendar, education, voice search, advanced order types, a full SwiftUI financial
   rewrite, account integrations, and later steps remain deferred pending review.
 - Do not commit, publish, or configure a remote unless the owner requests it.

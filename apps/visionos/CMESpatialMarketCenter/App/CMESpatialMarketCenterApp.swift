@@ -4,11 +4,15 @@ import SwiftUI
 @MainActor
 struct CMESpatialMarketCenterApp: App {
     @State private var workspace = WorkspaceModel()
+    @State private var dashboardSession = DashboardSession()
+    @State private var immersion = ImmersiveDeskModel()
 
     var body: some Scene {
-        WindowGroup("CME Spatial Market Center", id: WorkspaceWindow.main.rawValue) {
-            MarketDashboardView()
+        WindowGroup("CME Spatial Market Center", id: WorkspaceWindow.main.rawValue, for: String.self) { _ in
+            MarketDashboardView(session: dashboardSession, immersion: immersion)
                 .frame(minWidth: 1040, minHeight: 700)
+        } defaultValue: {
+            WorkspaceWindow.main.rawValue
         }
         .defaultSize(width: 1440, height: 960)
         .windowResizability(.contentMinSize)
@@ -42,5 +46,10 @@ struct CMESpatialMarketCenterApp: App {
         }
         .windowStyle(.volumetric)
         .defaultSize(width: 0.65, height: 0.50, depth: 0.45, in: .meters)
+
+        ImmersiveSpace(id: ImmersiveDeskModel.spaceID) {
+            ImmersiveDeskScene(session: dashboardSession, immersion: immersion)
+        }
+        .immersionStyle(selection: .constant(.full), in: .full)
     }
 }

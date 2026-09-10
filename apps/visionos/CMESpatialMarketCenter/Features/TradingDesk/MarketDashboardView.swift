@@ -1,18 +1,12 @@
 import SwiftUI
 
-enum DashboardLoadState: Equatable {
-    case loading
-    case ready
-    case failed(String)
-}
-
 @MainActor
 struct MarketDashboardView: View {
+    let session: DashboardSession
+    let immersion: ImmersiveDeskModel
+    var host: DashboardHost = .window
     @Environment(\.openWindow) private var openWindow
-    @State private var loadState: DashboardLoadState = .loading
-    @State private var reloadID = UUID()
     @State private var showingReloadConfirmation = false
-    private let dashboard = BundledDashboard.load()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -30,12 +24,26 @@ struct MarketDashboardView: View {
             .padding(.horizontal, 24)
             .padding(.vertical, 16)
 
-            if let dashboard {
-                DashboardWebView(dashboard: dashboard, loadState: $loadState)
-                    .id(reloadID)
+            if let message = immersion.message {
+                Text(message)
+                    .font(.callout)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 12)
+                    .accessibilityIdentifier("dashboard.immersiveMessage")
+            }
+
+            if host != immersion.dashboardHost {
+                ContentUnavailableView {
+                    Label("Your desk is in the 360° room", systemImage: "view.3d")
+                } description: {
+                    Text("Look around for the market screens, or return to this window. Your synthetic session and paper account stay with you.")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if session.dashboard != nil {
+                DashboardWebView(session: session, immersion: immersion, host: host)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay {
-                        switch loadState {
+                        switch session.loadState {
                         case .loading:
                             ProgressView("Opening offline market desk…")
                                 .padding(28)
@@ -53,11 +61,33 @@ struct MarketDashboardView: View {
                 )
             }
         }
-        .confirmationDialog("Reload this local desk?", isPresented: $showingReloadConfirmation, titleVisibility: .visible) {
-            Button("Reload and reset desk", role: .destructive) { reload() }
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("This resets the synthetic session, paper balance, positions and fills, open web panels, and in-memory watchlist. No real market data or orders are involved.")
+        .disabled(showingReloadConfirmation)
+        .accessibilityHidden(showingReloadConfirmation)
+        .overlay {
+            if showingReloadConfirmation {
+                // Modal SwiftUI presentations from attachments require visionOS 26.
+                // Keep confirmation inside the surface for our visionOS 2 target.
+                ZStack {
+                    Color.black.opacity(0.65)
+                    VStack(alignment: .leading, spacing: 24) {
+                        Text("Reload this local desk?").font(.title2.bold())
+                        Text("This resets the synthetic session, paper balance, positions and fills, open web panels, and in-memory watchlist. No real market data or orders are involved.")
+                        HStack {
+                            Button("Keep my desk") { showingReloadConfirmation = false }
+                                .keyboardShortcut(.cancelAction)
+                                .accessibilityIdentifier("dashboard.cancelReload")
+                            Button("Reload and reset desk", role: .destructive) {
+                                showingReloadConfirmation = false
+                                session.reload()
+                            }
+                            .accessibilityIdentifier("dashboard.confirmReload")
+                        }
+                    }
+                    .padding(32)
+                    .frame(maxWidth: 620)
+                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24))
+                }
+            }
         }
     }
 
@@ -74,8 +104,8 @@ struct MarketDashboardView: View {
     }
 
     private var statusText: String {
-        guard dashboard != nil else { return "Dashboard assets missing" }
-        switch loadState {
+        guard session.dashboard != nil else { return "Dashboard assets missing" }
+        switch session.loadState {
         case .loading: return "Loading bundled dashboard…"
         case .ready: return "Ready · No CME connection"
         case .failed: return "Local dashboard unavailable"
@@ -84,18 +114,27 @@ struct MarketDashboardView: View {
 
     private var controls: some View {
         HStack(spacing: 12) {
-            Button("Native workspace", systemImage: "rectangle.3.group") {
-                openWindow(id: WorkspaceWindow.workspace.rawValue, value: WorkspaceWindow.workspace.rawValue)
+            ImmersiveDeskButton(immersion: immersion, canEnter: session.loadState == .ready)
+                .buttonStyle(.borderedProminent)
+            if host == .window {
+                Button("Native workspace", systemImage: "rectangle.3.group") {
+                    openWindow(id: WorkspaceWindow.workspace.rawValue, value: WorkspaceWindow.workspace.rawValue)
+                }
+                .accessibilityIdentifier("dashboard.openWorkspace")
+                Button("Native volume", systemImage: "cube") {
+                    openWindow(id: WorkspaceWindow.spatialPreview.rawValue, value: WorkspaceWindow.spatialPreview.rawValue)
+                }
+                .accessibilityIdentifier("dashboard.openSpatialPreview")
+            } else {
+                Button("Reset room arrangement", systemImage: "arrow.uturn.backward") {
+                    immersion.resetArrangement()
+                }
+                .accessibilityIdentifier("dashboard.resetRoom")
             }
-            .accessibilityIdentifier("dashboard.openWorkspace")
-            Button("Native volume", systemImage: "cube") {
-                openWindow(id: WorkspaceWindow.spatialPreview.rawValue, value: WorkspaceWindow.spatialPreview.rawValue)
-            }
-            .accessibilityIdentifier("dashboard.openSpatialPreview")
             Button("Reload desk", systemImage: "arrow.clockwise") {
                 showingReloadConfirmation = true
             }
-            .disabled(dashboard == nil)
+            .disabled(session.dashboard == nil || immersion.isTransitioning)
             .accessibilityIdentifier("dashboard.reload")
         }
         .font(.callout)
@@ -108,16 +147,11 @@ struct MarketDashboardView: View {
             Text(message)
         } actions: {
             if canRetry {
-                Button("Retry local dashboard") { reload() }
+                Button("Retry local dashboard") { session.reload() }
                     .accessibilityIdentifier("dashboard.retry")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.regularMaterial)
-    }
-
-    private func reload() {
-        loadState = .loading
-        reloadID = UUID()
     }
 }

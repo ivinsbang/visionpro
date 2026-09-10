@@ -37,6 +37,115 @@ async function openDesk(page) {
     await expect(page.locator("html")).toHaveAttribute("data-host", "visionos");
 }
 
+test("surround snapshots follow the selected market and the full saved watchlist", async ({ page }) => {
+    await openDesk(page);
+    await page.getByRole("button", { name: "Select CL demo contract", exact: true }).click();
+    await page.getByRole("button", { name: "Add ZC to watchlist", exact: true }).click();
+    await page.getByRole("searchbox", { name: "Search demo contracts" }).fill("CL");
+    const result = await page.evaluate(() => ({
+        snapshot: window.readNativeDeskSnapshot(),
+        last: document.querySelector("#selected-price").textContent,
+        generatedAt: document.querySelector("#market-generated-at").title,
+        depth: [...document.querySelectorAll("#depth-rows tr")].map((row) => [...row.cells].map((cell) => cell.textContent))
+    }));
+    const panels = new Map(result.snapshot.panels.map((panel) => [panel.id, panel]));
+    expect(result.snapshot.version).toBe(1);
+    expect(result.snapshot.source).toContain("synthetic");
+    expect(result.snapshot.generatedAt).toBe(result.generatedAt);
+    expect(panels.size).toBe(5);
+    expect(panels.get("chart").title).toContain("CL");
+    expect(panels.get("chart").metrics[0].value).toBe(result.last);
+    expect(panels.get("chart").chartValues).toHaveLength(60);
+    expect(panels.get("chart").chartValues.at(-1)).toBe(Number(result.last.replaceAll(",", "")));
+    expect(panels.get("depth").rows).toEqual(result.depth);
+    expect(panels.get("watchlist").rows.map((row) => row[0])).toContain("ZC");
+    expect(panels.get("watchlist").rows).toHaveLength(5);
+    for (const panel of panels.values()) {
+        expect(panel.rows.every((row) => row.length === panel.columns.length)).toBe(true);
+    }
+
+    // Reading a projection cannot mutate feed, paper orders, or watchlist state.
+    await page.getByRole("button", { name: "Pause feed", exact: true }).click();
+    const before = await page.evaluate(() => window.readNativeDeskSnapshot());
+    const after = await page.evaluate(() => {
+        for (let index = 0; index < 20; index += 1) window.readNativeDeskSnapshot();
+        return window.readNativeDeskSnapshot();
+    });
+    expect(after).toEqual(before);
+});
+
+test("surround portfolio and risk read confirmed fills from the existing paper ledger", async ({ page }) => {
+    await openDesk(page);
+    await page.locator('[data-page="paper"]').click();
+    await page.locator("#paper-contract").selectOption("CL");
+    await page.locator("#paper-quantity").fill("2");
+    await page.getByRole("button", { name: "Review paper order", exact: true }).click();
+    const reviewed = await page.evaluate(() => window.readNativeDeskSnapshot());
+    expect(reviewed.panels.find((panel) => panel.id === "portfolio").rows).toEqual([]);
+    expect(reviewed.panels.find((panel) => panel.id === "risk").rows).toEqual([]);
+    await page.getByRole("button", { name: "Confirm paper order", exact: true }).click();
+    await expect(page.locator("#paper-fill-count")).toHaveText("1 fill");
+
+    // The portfolio page can remain hidden; its values still belong to this account.
+    const result = await page.evaluate(() => ({
+        snapshot: window.readNativeDeskSnapshot(),
+        equity: document.querySelector("#portfolio-equity").textContent,
+        margin: document.querySelector("#portfolio-margin").textContent,
+        fillID: document.querySelector("#paper-fill-rows tr").dataset.fillId
+    }));
+    const portfolio = result.snapshot.panels.find((panel) => panel.id === "portfolio");
+    const risk = result.snapshot.panels.find((panel) => panel.id === "risk");
+    expect(portfolio.metrics[0].value).toBe(result.equity);
+    expect(portfolio.rows).toHaveLength(1);
+    expect(portfolio.rows[0].slice(0, 2)).toEqual(["CL Energy", "Long 2"]);
+    expect(risk.metrics.find((metric) => metric.label === "Demo margin").value).toBe(result.margin);
+    expect(risk.rows).toHaveLength(1);
+    expect(risk.rows[0][0]).toContain(result.fillID);
+    expect(risk.rows[0].slice(1, 4)).toEqual(["CL", "Buy", "2"]);
+    expect(portfolio.rows[0]).toHaveLength(6); // No native close/submit command.
+
+    await page.locator('[data-page="portfolio"]').click();
+    await page.getByRole("button", { name: "Reset paper account", exact: true }).click();
+    await page.getByRole("button", { name: "Confirm paper reset", exact: true }).click();
+    const reset = await page.evaluate(() => window.readNativeDeskSnapshot());
+    expect(reset.panels.find((panel) => panel.id === "portfolio").rows).toEqual([]);
+    expect(reset.panels.find((panel) => panel.id === "risk").rows).toEqual([]);
+});
+
+test("surround reads mark old quotes stale even while the dashboard timer is suspended", async ({ page }) => {
+    await page.clock.install({ time: new Date("2026-09-10T12:00:00Z") });
+    await page.clock.pauseAt(new Date("2026-09-10T12:00:01Z"));
+    await openDesk(page);
+    const initial = await page.evaluate(() => window.readNativeDeskSnapshot());
+    await page.clock.setSystemTime(new Date("2026-09-10T12:00:11Z"));
+    const stale = await page.evaluate(() => window.readNativeDeskSnapshot());
+    expect(stale.generatedAt).toBe(initial.generatedAt);
+    expect(stale.freshness).toBe("Stale snapshot");
+    expect(stale.panels.find((panel) => panel.id === "portfolio").note).toContain("held synthetic marks");
+});
+
+test("surround projections keep held timestamps through pause and outage", async ({ page }) => {
+    await page.clock.install({ time: new Date("2026-09-10T12:00:00Z") });
+    await openDesk(page);
+    await page.getByRole("button", { name: "Pause feed", exact: true }).click();
+    const paused = await page.evaluate(() => window.readNativeDeskSnapshot());
+    await page.clock.runFor(8000);
+    const held = await page.evaluate(() => window.readNativeDeskSnapshot());
+    expect(held.generatedAt).toBe(paused.generatedAt);
+    expect(held.freshness).toBe("Paused snapshot");
+    expect(held.panels.find((panel) => panel.id === "portfolio").note).toContain("held synthetic marks");
+    await page.getByRole("button", { name: "Resume feed", exact: true }).click();
+    await page.locator('[data-page="settings"]').click();
+    await page.getByRole("button", { name: "Simulate feed outage", exact: true }).click();
+    const interrupted = await page.evaluate(() => window.readNativeDeskSnapshot());
+    await page.clock.runFor(8000);
+    const stale = await page.evaluate(() => window.readNativeDeskSnapshot());
+    expect(stale.generatedAt).toBe(interrupted.generatedAt);
+    expect(stale.freshness).toBe("Stale snapshot");
+    expect(stale.panels.find((panel) => panel.id === "chart").chartValues)
+        .toEqual(interrupted.panels.find((panel) => panel.id === "chart").chartValues);
+});
+
 for (const viewport of [{ width: 1440, height: 840 }, { width: 1040, height: 590 }, { width: 600, height: 600 }]) {
     test(`native document scrolling reaches every page bottom at ${viewport.width}x${viewport.height}`, async ({ page }) => {
         await page.setViewportSize(viewport);

@@ -12,7 +12,7 @@ const sourcePaths = [
     "market/simulator.js", "market/chart.js", "market/dashboard.js", "market/dashboard.css",
     "market/paper-trading-model.js", "market/paper-trading-fixtures.js", "market/paper-trading.js", "market/paper-trading.css",
     "spatial/desk-layout.js", "spatial/desk.js", "spatial/desk.css",
-    "hosts/visionos.css", "scripts/build-visionos.js"
+    "hosts/visionos.css", "hosts/visionos-surround.js", "scripts/build-visionos.js"
 ];
 
 export const contentSecurityPolicy = [
@@ -80,9 +80,9 @@ export async function createVisionOSBundle() {
         ["for local Windows review", "bundled for offline visionOS use"],
         ["Star markets to save on this browser.", "Watchlist lasts while this desk is open."],
         ["Browser prototype", "Bundled dashboard"],
-        ["Only your demo watchlist is saved in this browser.", "Your demo watchlist stays in memory while this desk is open. Closing or reloading the desk resets it."],
+        ["Only your demo watchlist is saved in this browser.", "Your demo watchlist stays in this app session. Quitting or reloading the desk resets it."],
         ["WINDOWS SPATIAL PROTOTYPE", "OFFLINE VISIONOS PROTOTYPE"],
-        ["Not a CME service or a visionOS simulator.", "Not a CME service. Web panels stay inside this app window."]
+        ["Not a CME service or a visionOS simulator.", "Not a CME service. Enter 360° view from the native toolbar."]
     ];
     for (const [original, replacement] of replacements) {
         html = replaceOnce(html, original, replacement);

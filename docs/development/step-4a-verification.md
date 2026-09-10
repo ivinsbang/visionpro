@@ -3,6 +3,8 @@
 This records the original financial-feature delivery. The later
 [3D desk and all-features video](windows-3d-desk.md) have their own review guide and
 updated validation counts; no new financial capabilities are implied.
+The subsequent [native 360-degree view](visionos-360-view.md) extends presentation
+of that same account, with native Simulator validation still pending.
 
 Implemented and checked on Windows on 2026-09-09 following the owner's request
 to build the next features. This is the bounded next milestone, not authorization

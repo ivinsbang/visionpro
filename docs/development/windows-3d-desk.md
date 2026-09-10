@@ -43,6 +43,9 @@ Narrow screens initially focus the desk rather than the panorama. Controls and
 tables remain scrollable; reduced-motion preferences disable camera transitions.
 The native resource bundle includes this web presentation, but it remains inside
 one `WKWebView`, not separate native windows or a RealityKit financial scene.
+For the native simulator's surrounding view, use **Enter 360° view** in its SwiftUI
+toolbar; the [native room](visionos-360-view.md) adds separate RealityKit attachments
+and retains the same interactive dashboard session.
 
 ## Record the full walkthrough
 

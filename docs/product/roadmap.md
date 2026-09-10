@@ -10,6 +10,8 @@ paper trading and portfolio/risk using only the existing synthetic engine. The
 remaining Step 4 features wait for another review, with no real-system integration.
 The subsequent request for a 3D Windows demo authorizes presentation and recording
 of these built features, without advancing into Step 4b.
+The owner's simulator report about the single-screen view authorizes correcting
+that presentation with a native 360-degree room using the same dashboard session.
 
 | Step | Deliverable | Status |
 | --- | --- | --- |
@@ -103,6 +105,12 @@ The follow-up [interactive 3D desk and narrated recording](../development/window
 reuses the actual windows, market session, paper account, and portfolio. Its
 nine-step guided tour never places orders. The optional recorder creates its
 example paper positions only in a separate, disposable browser session.
+The subsequent [native 360-degree view](../development/visionos-360-view.md) adds an
+immersive six-screen ring: the original interactive desk plus five read-only
+projections of its market and account values. One retained WebKit session preserves
+the synthetic engine and ledger across entry/exit. This is an authorized presentation
+correction within Step 4a; native build, Simulator rendering, and device validation
+of the new room are pending.
 Review this milestone before calendar, education, voice, advanced orders, or any
 later integration. Windows checks do not establish native Simulator/device behavior.
 

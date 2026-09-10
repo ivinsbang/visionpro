@@ -1,5 +1,8 @@
 # Step 3a: visionOS simulator compatibility
 
+This records the original window-based compatibility delivery. The later
+[360-degree presentation](visionos-360-view.md) has its own scope and validation record.
+
 ## Scope delivered
 
 The owner requested visionOS simulator compatibility for the existing Windows

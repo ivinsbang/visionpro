@@ -2,6 +2,34 @@ import XCTest
 
 final class WorkspaceUITests: XCTestCase {
     @MainActor
+    func testImmersiveRoundTripKeepsThePausedDesk() {
+        let application = XCUIApplication()
+        application.launch()
+        let enter = application.buttons["dashboard.enterImmersive"]
+        XCTAssertTrue(enter.waitForExistence(timeout: 10))
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: enter)
+        XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 20), .completed)
+        let pause = application.webViews.firstMatch.buttons["Pause feed"].firstMatch
+        XCTAssertTrue(pause.waitForExistence(timeout: 10))
+        pause.tap()
+        enter.tap()
+
+        XCTAssertTrue(application.buttons["dashboard.resetRoom"].waitForExistence(timeout: 15))
+        let resumeInRoom = application.webViews.firstMatch.buttons["Resume feed"].firstMatch
+        XCTAssertTrue(resumeInRoom.waitForExistence(timeout: 10))
+        let exits = application.buttons.matching(identifier: "dashboard.exitImmersive")
+        let exitReady = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: exits.firstMatch)
+        XCTAssertEqual(XCTWaiter.wait(for: [exitReady], timeout: 10), .completed)
+        guard let exit = exits.allElementsBoundByIndex.first(where: { $0.isHittable && $0.isEnabled }) else {
+            XCTFail("The immersive room must expose a reachable return control.")
+            return
+        }
+        exit.tap()
+        XCTAssertTrue(enter.waitForExistence(timeout: 15))
+        XCTAssertTrue(application.webViews.firstMatch.buttons["Resume feed"].firstMatch.waitForExistence(timeout: 10))
+    }
+
+    @MainActor
     func testLaunchShowsOfflineMarketDesk() {
         let application = XCUIApplication()
         application.launch()
